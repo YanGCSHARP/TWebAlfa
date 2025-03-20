@@ -27,23 +27,23 @@
                 {
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Register", "Account")">Регистрация</a></li>
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Login", "Account")">Вход</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Catalog", "Product")">Каталог</a></li>
+                    
+                    
                 }
 
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Product")">Продукт</a></li>
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Category")">Категория</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("CheckOut", "Order")">Заказ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Catalog", "Product")">Каталог</a></li>
+                    
                 }
             </ul>
 
             @if (Request.IsAuthenticated)
             {
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Logout", "Account")">Выход</a>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Logout", "Account")">Выход</a>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Profile")">Профиль</a></li>
                     </li>
                 </ul>
             }

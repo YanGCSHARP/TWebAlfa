@@ -6,19 +6,13 @@ using TWebAlfa5.Models;
 
 namespace TWebAlfa5.Controllers
 {
+    
     public class CartController : Controller
     {
         private readonly WebDbContext db = new WebDbContext();
 
         // Модель элемента корзины
-        public class CartItem
-        {
-            public Guid ProductId { get; set; }
-            public int Quantity { get; set; }
-            public decimal Price { get; set; }
-            public Product Product { get; set; }
-            public decimal TotalPrice => Price * Quantity;
-        }
+        
 
         // Корзина в сессии
         private List<CartItem> Cart
@@ -37,6 +31,7 @@ namespace TWebAlfa5.Controllers
         }
 
         // Добавление товара в корзину
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult AddToCart(Guid productId, int quantity = 1)
         {
@@ -67,6 +62,7 @@ namespace TWebAlfa5.Controllers
         }
 
         // Просмотр корзины
+        [Authorize(Roles = "User")]
         public ActionResult Index()
         {
             var cart = Cart;
@@ -78,6 +74,7 @@ namespace TWebAlfa5.Controllers
         }
 
         // Обновление количества
+        [Authorize(Roles = "User")]
         [HttpPost]
         public ActionResult UpdateCart(Guid productId, int quantity)
         {
@@ -95,6 +92,7 @@ namespace TWebAlfa5.Controllers
         }
 
         // Удаление товара
+        [Authorize(Roles = "User")]
         [HttpPost]
         public ActionResult RemoveFromCart(Guid productId)
         {
@@ -105,6 +103,7 @@ namespace TWebAlfa5.Controllers
         }
 
         // Очистка корзины
+        [Authorize(Roles = "User")]
         [HttpPost]
         public ActionResult ClearCart()
         {

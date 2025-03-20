@@ -124,6 +124,7 @@
 
 using System;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -133,7 +134,9 @@ namespace TWebAlfa5.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly WebDbContext db = new WebDbContext(); // Контекст базы данных для работы с пользователями и ролями
+        private readonly WebDbContext db = new WebDbContext();
+        
+     
 
         // GET: Отображает форму входа
         [HttpGet]
@@ -183,42 +186,68 @@ namespace TWebAlfa5.Controllers
         }
 
         // POST: Обрабатывает регистрацию нового пользователя
+         // Защита от подделки запросов
         [HttpPost]
-        [ValidateAntiForgeryToken] // Защита от подделки запросов
+        [ValidateAntiForgeryToken]
         public ActionResult Register(Register model)
         {
-            if (ModelState.IsValid) // Проверяем, валидны ли данные формы
+            if (ModelState.IsValid)
             {
-                if (db.Users.Any(u => u.Email == model.Email)) // Проверяем, существует ли пользователь с таким email
+                if (db.Users.Any(u => u.Email == model.Email))
                 {
                     ModelState.AddModelError("Email", "Пользователь с таким email уже существует.");
-                    return View(model); // Возвращаем вид с ошибкой
+                    return View(model);
                 }
 
-                var user = new User // Создаём нового пользователя
+                // Создаем пользователя
+                var user = new User
                 {
                     Email = model.Email,
                     Name = model.Name,
-                    PasswordHash = HashPassword(model.Password) // Хешируем пароль
+                    PasswordHash = HashPassword(model.Password)
                 };
 
-                db.Users.Add(user); // Добавляем пользователя в базу данных
-                db.SaveChanges(); // Сохраняем изменения
+                db.Users.Add(user);
+                db.SaveChanges(); // Сохраняем пользователя
 
-                // Добавляем пользователя в роль "User"
-                var role = db.Roles.FirstOrDefault(r => r.Name == "User"); // Находим роль "User"
-                if (role != null)
+                // Проверяем существование роли "User" и создаем, если отсутствует
+                var role = db.Roles.FirstOrDefault(r => r.Name == "User");
+                if (role == null)
                 {
-                    db.UserRoles.Add(new UserRole { UserId = user.Id, RoleId = role.Id }); // Присваиваем роль пользователю
-                    db.SaveChanges(); // Сохраняем изменения
+                    role = new Role { Name = "User" };
+                    db.Roles.Add(role);
+                    db.SaveChanges(); // Сохраняем роль
                 }
 
-                // Аутентифицируем пользователя после регистрации
-                FormsAuthentication.SetAuthCookie(user.Name, false); // Устанавливаем куку аутентификации
-                return RedirectToAction("Index", "Home"); // Перенаправляем на главную страницу
-            }
+                // Назначаем роль пользователю
+                db.UserRoles.Add(new UserRole 
+                { 
+                    UserId = user.Id, 
+                    RoleId = role.Id 
+                });
+                db.SaveChanges();
 
-            return View(model); // Возвращаем вид с моделью для повторного ввода
+                // Создаем аутентификационный билет с ролями
+                string roles = "User";
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    1,
+                    user.Name,
+                    DateTime.Now,
+                    DateTime.Now.AddHours(1),
+                    false,
+                    roles);
+
+                // Шифруем билет и создаем куки
+                string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+                HttpCookie authCookie = new HttpCookie(
+                    FormsAuthentication.FormsCookieName, 
+                    encryptedTicket
+                );
+                Response.Cookies.Add(authCookie);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
         }
 
         // Выход пользователя из системы

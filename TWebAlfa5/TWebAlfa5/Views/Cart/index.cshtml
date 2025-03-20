@@ -1,4 +1,4 @@
-﻿@model List<TWebAlfa5.Controllers.CartController.CartItem>
+﻿@model List<TWebAlfa5.Models.CartItem>
 
 @{
     ViewBag.Title = "Корзина";
@@ -78,7 +78,7 @@
             
             <div class="col-md-6 text-right">
                 <h4 class="text-success">
-                    Общая сумма: @Model.Sum(i => i.TotalPrice).ToString("N2") ₽
+                    Общая сумма: @Model.Sum(i => i.TotalPrice).ToString("N2") $
                 </h4>
                 <a href="@Url.Action("Checkout", "Order")" 
                    class="btn btn-success btn-lg mt-2">

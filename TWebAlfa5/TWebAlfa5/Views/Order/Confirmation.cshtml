@@ -6,12 +6,12 @@
 }
 
 <div class="container mt-4">
-    <div class="alert alert-success">
+    <div class="alert alert-success text-center">
         <h2><i class="fas fa-check-circle"></i> Спасибо за заказ!</h2>
         <p>Номер вашего заказа: <strong>@Model.Id</strong></p>
     </div>
 
-    <div class="card">
+    <div class="card mb-4">
         <div class="card-header">
             <h4>Детали заказа</h4>
         </div>
@@ -24,17 +24,65 @@
                 <dd class="col-sm-9">@Model.Status</dd>
 
                 <dt class="col-sm-3">Итого:</dt>
-                <dd class="col-sm-9">@Model.TotalPrice.ToString("N2") $</dd>
+                <dd class="col-sm-9">@Model.TotalPrice.ToString("N2") ₽</dd>
             </dl>
 
             <h5>Товары:</h5>
-            @Html.Partial("_OrderItemsSummary", Model.OrderItems)
+            @if (Model.OrderItems != null && Model.OrderItems.Any())
+            {
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                        <th>Сумма</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <tr>
+                            <td>@(item.Product?.Name)</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price.ToString("N2") ₽</td>
+                            <td>@((item.Quantity * item.Price).ToString("N2")) ₽</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning">Нет товаров в заказе</div>
+            }
         </div>
     </div>
 
-    <div class="text-center mt-4">
-        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
-            <i class="fas fa-home"></i> Вернуться на главную
-        </a>
+    <div class="card">
+        <div class="card-header">
+            <h4>Информация о доставке</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Имя:</dt>
+                <dd class="col-sm-9">@(Model.ShippingAddress?.Name ?? "Адрес не указан")</dd>
+                <!-- Повторите для других полей -->
+                <dt class="col-sm-3">Телефон:</dt>
+                <dd class="col-sm-9">@(Model.ShippingAddress?.Phone)</dd>
+
+                <dt class="col-sm-3">Страна:</dt>
+                <dd class="col-sm-9">@(Model.ShippingAddress?.Country)</dd>
+
+                <dt class="col-sm-3">Город:</dt>
+                <dd class="col-sm-9">@(Model.ShippingAddress?.City)</dd>
+
+                <dt class="col-sm-3">Адрес:</dt>
+                <dd class="col-sm-9">@(Model.ShippingAddress?.AddressLine)</dd>
+
+                <dt class="col-sm-3">Почтовый индекс:</dt>
+                <dd class="col-sm-9">@(Model.ShippingAddress?.PostalCode)</dd>
+            </dl>
+        </div>
     </div>
 </div>

@@ -18,6 +18,8 @@
             
             public DbSet<OrderItem> OrderItems { get; set; }
             
+            public DbSet<ShippingAddress> ShippingAddresses { get; set; }
+            
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
@@ -25,6 +27,16 @@
                 
                 modelBuilder.Entity<UserRole>()
                     .HasKey(ur => new { ur.UserId, ur.RoleId });
+                
+                
+                
+                modelBuilder.Entity<Order>()
+                    .HasRequired(o => o.ShippingAddress)
+                    .WithMany()
+                    .HasForeignKey(o => o.ShippingAddressId)
+                    .WillCascadeOnDelete(false);
+
+                base.OnModelCreating(modelBuilder);
                 
             }
         }

@@ -4,6 +4,8 @@ using System.Net;
 using System.Web.Mvc;
 using TWebAlfa5.Models;
 using System.Data.Entity;
+using System.IO;
+using System.Web;
 
 namespace TWebAlfa5.Controllers
 {
@@ -18,7 +20,7 @@ namespace TWebAlfa5.Controllers
             var products = db.Products.Include(p => p.Category).ToList();
             return View(products);
         }
-
+        [AllowAnonymous]
         public ActionResult Details(Guid id)
         {
             var product = db.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
@@ -34,11 +36,35 @@ namespace TWebAlfa5.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase imageFile)
         {
+            if (ModelState.IsValid)
+            {
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    try
+                    {
+                        // Генерируем уникальное имя файла
+                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                        string path = Path.Combine(Server.MapPath("~/Content/Images/Products"), fileName);
+                        imageFile.SaveAs(path);
+                        product.ImageUrl = "/Content/Images/Products/" + fileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Ошибка загрузки изображения: " + ex.Message);
+                        ViewBag.Categories = new SelectList(db.Categories, "Id", "Name");
+                        return View(product);
+                    }
+                }
+
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Catalog");
+            }
             // Получаем выбранный CategoryId из формы
             var categoryId = Request.Form["CategoryId"];
-    
+            
             if (!string.IsNullOrEmpty(categoryId))
             {
                 // Находим категорию в базе данных
@@ -77,10 +103,27 @@ namespace TWebAlfa5.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product,HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (imageFile != null && imageFile.ContentLength > 0)
+                {
+                    try
+                    {
+                        // Генерируем уникальное имя файла
+                        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                        string path = Path.Combine(Server.MapPath("~/Content/Images/Products"), fileName);
+                        imageFile.SaveAs(path);
+                        product.ImageUrl = "/Content/Images/Products/" + fileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", "Ошибка загрузки изображения: " + ex.Message);
+                        ViewBag.Categories = new SelectList(db.Categories, "Id", "Name");
+                        return View(product);
+                    }
+                }
                 // Получаем выбранный CategoryId из формы
                 var categoryId = Request.Form["CategoryId"];
         
@@ -141,7 +184,7 @@ namespace TWebAlfa5.Controllers
     
             return View(products);
         }
-
+        
         
        
         
