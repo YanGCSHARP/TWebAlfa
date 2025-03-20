@@ -1,0 +1,66 @@
+﻿@model TWebAlfa5.Models.Order
+
+@{
+    ViewBag.Title = "Оформление заказа";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>@ViewBag.Title</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <!-- Контактные данные -->
+            <div class="col-md-6">
+                <h4>Контактная информация</h4>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerName)
+                    @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control", placeholder = "Иван Иванов" })
+                    @Html.ValidationMessageFor(model => model.CustomerName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerEmail)
+                    @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "form-control", placeholder = "example@mail.com" })
+                    @Html.ValidationMessageFor(model => model.CustomerEmail)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerPhone)
+                    @Html.TextBoxFor(model => model.CustomerPhone, new { @class = "form-control", placeholder = "+7 (900) 123-45-67" })
+                    @Html.ValidationMessageFor(model => model.CustomerPhone)
+                </div>
+            </div>
+
+            <!-- Детали заказа -->
+            <div class="col-md-6">
+                <h4>Ваш заказ</h4>
+                <div class="card">
+                    <div class="card-body">
+                        @Html.Partial("_OrderItemsSummary", Model.OrderItems)
+                        <hr>
+                        <h5 class="text-right">
+                            Итого: <span class="text-danger">@Model.TotalPrice.ToString("N2") $</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success btn-lg">
+                <i class="fas fa-check-circle"></i> Подтвердить заказ
+            </button>
+        </div>
+    }
+</div>
+
+<style>
+    .card {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+</style>

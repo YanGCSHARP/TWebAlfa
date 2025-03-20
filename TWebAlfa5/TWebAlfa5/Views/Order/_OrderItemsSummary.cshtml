@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TWebAlfa5.Models.OrderItem>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Сумма</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(item.Product?.Name)</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price.ToString("N2") ₽</td>
+            <td>@((item.Quantity * item.Price).ToString("N2")) ₽</td>
+        </tr>
+    }
+    </tbody>
+</table>

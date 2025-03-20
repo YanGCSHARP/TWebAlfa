@@ -1,30 +1,42 @@
 ﻿@model TWebAlfa5.Models.Register
-
 @{
     ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Регистрация</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    <div>
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email)
-        @Html.ValidationMessageFor(m => m.Email)
+<div class="container-fluid py-3">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-10">
+            <div class="auth-container">
+                <div class="auth-form active" id="register-form">
+                    <h3 class="text-center mb-3">Регистрация</h3>
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "auth-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Name, new { @class = "form-label", @for = "register-name" })
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", id = "register-name", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label", @for = "register-email" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "register-email", required = "required", type = "email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Password, new { @class = "form-label", @for = "register-password" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "register-password", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "form-label", @for = "register-password-confirm" })
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", id = "register-password-confirm", required = "required" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">Зарегистрироваться</button>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password)
-        @Html.ValidationMessageFor(m => m.Password)
-    </div>
-    <div>
-        @Html.LabelFor(m => m.ConfirmPassword)
-        @Html.PasswordFor(m => m.ConfirmPassword)
-        @Html.ValidationMessageFor(m => m.ConfirmPassword)
-    </div>
-    <div>
-        <input type="submit" value="Зарегистрироваться" />
-    </div>
-}
+</div>

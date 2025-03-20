@@ -1,9 +1,39 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model object
+@{
+    ViewBag.Title = "Контакты - LNP Fashion Demon";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Используем общий макет
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    My Company Address
-</address>
+<div class="container-fluid py-3">
+    <main>
+        <h2 class="text-center mb-3">Контакты</h2>
+        <div class="contact-info text-center">
+            <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+            <p>Email: info@lnp-fashion.com</p>
+            <p>Адрес: г. Кишинёв, ул. Студенческая, д. 3</p>
+        </div>
+
+        <div class="contact-form row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-12">
+                <h3 class="text-center mb-3">Форма обратной связи</h3>
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "auth-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group mb-3">
+                        @Html.Label("Имя:", new { @class = "form-label", @for = "name" })
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.Label("Email:", new { @class = "form-label", @for = "email" })
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.Label("Сообщение:", new { @class = "form-label", @for = "message" })
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100">Отправить</button>
+                }
+            </div>
+        </div>
+    </main>
+</div>

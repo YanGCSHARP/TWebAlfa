@@ -1,143 +1,255 @@
-﻿using System;
+﻿//using System;
+//using System.Linq;
+//using System.Web;
+//using System.Web.Mvc;
+//using System.Web.Security;
+//using TWebAlfa5.Models;
+
+//namespace TWebAlfa5.Controllers
+//{
+//    public class AccountController : Controller
+//    {
+//        private readonly WebDbContext db = new WebDbContext(); 
+
+//        [HttpGet]
+//        public ActionResult Login()
+//        {
+//            return View();
+//        }
+
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Login(Login model, string returnUrl)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                var user = db.Users.FirstOrDefault(u => u.Name == model.Name);
+//                if (user != null && VerifyPassword(model.Password, user.PasswordHash))
+//                {
+//                    // Загружаем роли пользователя
+//                    string roles = GetUserRoles(user.Id);
+
+//                    // Создаем ticket аутентификации с ролями
+//                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+//                        1, user.Name, DateTime.Now, DateTime.Now.AddHours(1), model.RememberMe, roles);
+
+//                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+//                    HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+//                    Response.Cookies.Add(authCookie);
+
+//                    if (Url.IsLocalUrl(returnUrl))
+//                        return Redirect(returnUrl);
+
+//                    return RedirectToAction("Index", "Home");
+//                }
+
+//                ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
+//            }
+
+//            return View(model);
+//        }
+
+//        public ActionResult Logout()
+//        {
+//            FormsAuthentication.SignOut();
+//            return RedirectToAction("Login", "Account");
+//        }
+
+//        [HttpGet]
+//        public ActionResult Register()
+//        {
+//            return View();
+//        }
+
+//        [HttpPost]
+//        [ValidateAntiForgeryToken]
+//        public ActionResult Register(Register model)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                if (db.Users.Any(u => u.Email == model.Email))
+//                {
+//                    ModelState.AddModelError("Email", "Пользователь с таким email уже существует.");
+//                    return View(model);
+//                }
+
+//                var user = new User
+//                {
+//                    Email = model.Email,
+//                    Name = model.Name,
+//                    PasswordHash = HashPassword(model.Password)
+//                };
+
+//                db.Users.Add(user);
+//                db.SaveChanges();
+
+//                // Добавляем пользователя в роль "User"
+//                var role = db.Roles.FirstOrDefault(r => r.Name == "User");
+//                if (role != null)
+//                {
+//                    db.UserRoles.Add(new UserRole { UserId = user.Id, RoleId = role.Id });
+//                    db.SaveChanges();
+//                }
+
+//                // Аутентифицируем пользователя
+//                FormsAuthentication.SetAuthCookie(user.Name, false);
+//                return RedirectToAction("Index", "Home");
+//            }
+
+//            return View(model);
+//        }
+
+//        private string GetUserRoles(Guid userId)
+//        {
+//            var roles = db.UserRoles
+//                          .Where(ur => ur.UserId == userId)
+//                          .Select(ur => ur.Role.Name)
+//                          .ToList();
+
+//            return string.Join(",", roles);
+//        }
+
+//        private string HashPassword(string password)
+//        {
+//            return FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1");
+//        }
+
+//        private bool VerifyPassword(string enteredPassword, string storedHash)
+//        {
+//            string enteredHash = FormsAuthentication.HashPasswordForStoringInConfigFile(enteredPassword, "SHA1");
+//            return string.Equals(enteredHash, storedHash, StringComparison.Ordinal);
+//        }
+//    }
+//}
+
+using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using TWebAlfa5.Models;
 using System.Web.Security;
+using TWebAlfa5.Models;
 
 namespace TWebAlfa5.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly WebDbContext db = new WebDbContext(); 
+        private readonly WebDbContext db = new WebDbContext(); // Контекст базы данных для работы с пользователями и ролями
 
-        // Действие для отображения страницы входа
+        // GET: Отображает форму входа
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
 
-        // Действие для обработки данных входа
+        // POST: Обрабатывает вход пользователя
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] // Защита от подделки запросов
         public ActionResult Login(Login model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Проверяем, валидны ли данные формы
             {
-                // Получение пользователя из базы данных
-                var user = db.Users.FirstOrDefault(u => u.Name == model.Name);
-                if (user != null)
+                var user = db.Users.FirstOrDefault(u => u.Name == model.Name); // Ищем пользователя по имени
+                if (user != null && VerifyPassword(model.Password, user.PasswordHash)) // Проверяем, существует ли пользователь и верен ли пароль
                 {
-                    // Сравнение хешированного пароля
-                    if (VerifyPassword(model.Password, user.PasswordHash))
-                    {
-                        // Установка аутентификационной куки
-                        FormsAuthentication.SetAuthCookie(user.Name, model.RememberMe);
-                        if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                            && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                        {
-                            return Redirect(returnUrl);
-                        }
-                        else
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
-                    }
+                    // Получаем роли пользователя
+                    string roles = GetUserRoles(user.Id);
+
+                    // Создаём билет аутентификации с ролями, действующий 1 час
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                        1, user.Name, DateTime.Now, DateTime.Now.AddHours(1), model.RememberMe, roles);
+
+                    string encryptedTicket = FormsAuthentication.Encrypt(ticket); // Шифруем билет
+                    HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket); // Создаём куку
+                    Response.Cookies.Add(authCookie); // Добавляем куку в ответ
+
+                    if (Url.IsLocalUrl(returnUrl)) // Если указан URL для возврата, перенаправляем туда
+                        return Redirect(returnUrl);
+
+                    return RedirectToAction("Index", "Home"); // Иначе перенаправляем на главную страницу
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
-                }
+
+                ModelState.AddModelError("", "Неверное имя пользователя или пароль."); // Ошибка, если данные неверны
             }
 
-            // Если мы попали сюда, значит произошла ошибка, повторно отображаем форму
-            return View(model);
+            return View(model); // Возвращаем вид с моделью для повторного ввода
         }
 
-
-        // Действие для выхода из системы
-        
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Login", "Account");
-        }
-
-        
-
-        // Действие для отображения страницы регистрации
+        // GET: Отображает форму регистрации
         [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
 
-        // Действие для обработки данных регистрации
+        // POST: Обрабатывает регистрацию нового пользователя
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] // Защита от подделки запросов
         public ActionResult Register(Register model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Проверяем, валидны ли данные формы
             {
-                // Проверка на существование пользователя с таким же email
-                if (db.Users.Any(u => u.Email == model.Email))
+                if (db.Users.Any(u => u.Email == model.Email)) // Проверяем, существует ли пользователь с таким email
                 {
                     ModelState.AddModelError("Email", "Пользователь с таким email уже существует.");
-                    return View(model);
+                    return View(model); // Возвращаем вид с ошибкой
                 }
 
-                // Создание нового пользователя
-                var user = new User
+                var user = new User // Создаём нового пользователя
                 {
                     Email = model.Email,
-                    Name = model.Email, // Или другое поле, если у вас есть отдельное поле для имени
-                    PasswordHash = HashPassword(model.Password)
+                    Name = model.Name,
+                    PasswordHash = HashPassword(model.Password) // Хешируем пароль
                 };
-                var role = db.Roles.FirstOrDefault(r => r.Name == "User");
-                var UserRole = new UserRole
+
+                db.Users.Add(user); // Добавляем пользователя в базу данных
+                db.SaveChanges(); // Сохраняем изменения
+
+                // Добавляем пользователя в роль "User"
+                var role = db.Roles.FirstOrDefault(r => r.Name == "User"); // Находим роль "User"
+                if (role != null)
                 {
-                    User = user,
-                    Role = role,
-                    UserId = user.Id,
-                    RoleId = role.Id
-                    
-                };
-                db.UserRoles.Add(UserRole);
-                db.Users.Add(user);
-                db.SaveChanges();
+                    db.UserRoles.Add(new UserRole { UserId = user.Id, RoleId = role.Id }); // Присваиваем роль пользователю
+                    db.SaveChanges(); // Сохраняем изменения
+                }
 
-                
-                
-                
-
-                // Аутентификация пользователя
-                FormsAuthentication.SetAuthCookie(user.Name, false /* createPersistentCookie */);
-                return RedirectToAction("Index", "Home");
+                // Аутентифицируем пользователя после регистрации
+                FormsAuthentication.SetAuthCookie(user.Name, false); // Устанавливаем куку аутентификации
+                return RedirectToAction("Index", "Home"); // Перенаправляем на главную страницу
             }
 
-            // Если мы попали сюда, значит произошла ошибка, повторно отображаем форму
-            return View(model);
+            return View(model); // Возвращаем вид с моделью для повторного ввода
         }
 
-        // Метод для хеширования пароля (используйте более надежный метод в реальных приложениях)
+        // Выход пользователя из системы
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut(); // Завершаем сессию пользователя
+            return RedirectToAction("Login", "Account"); // Перенаправляем на страницу входа
+        }
+
+        // Вспомогательный метод: Получает роли пользователя
+        private string GetUserRoles(Guid userId)
+        {
+            var roles = db.UserRoles
+                          .Where(ur => ur.UserId == userId) // Фильтруем роли по ID пользователя
+                          .Select(ur => ur.Role.Name) // Получаем названия ролей
+                          .ToList();
+
+            return string.Join(",", roles); // Объединяем роли в строку, разделённую запятыми
+        }
+
+        // Вспомогательный метод: Хеширует пароль для хранения
         private string HashPassword(string password)
         {
-            // Здесь должен быть надежный алгоритм хеширования, например, bcrypt или PBKDF2
-            return FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1");
+            return FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1"); // Хешируем пароль с использованием SHA1
         }
+
+        // Вспомогательный метод: Проверяет, совпадает ли введённый пароль с хешем
         private bool VerifyPassword(string enteredPassword, string storedHash)
         {
-            // Получение хеша введенного пароля
-            string enteredHash = FormsAuthentication.HashPasswordForStoringInConfigFile(enteredPassword, "SHA1");
-
-            // Сравнение хешей
-            return string.Equals(enteredHash, storedHash, StringComparison.Ordinal);
+            string enteredHash = FormsAuthentication.HashPasswordForStoringInConfigFile(enteredPassword, "SHA1"); // Хешируем введённый пароль
+            return string.Equals(enteredHash, storedHash, StringComparison.Ordinal); // Сравниваем хеши
         }
-
     }
-    
 }

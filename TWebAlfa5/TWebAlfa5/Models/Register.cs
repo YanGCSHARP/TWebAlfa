@@ -4,6 +4,10 @@ namespace TWebAlfa5.Models
 {
     public class Register
     {
+        [Required(ErrorMessage = "Имя обязательно")]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+        
         [Required(ErrorMessage = "Email обязателен")]
         [EmailAddress(ErrorMessage = "Некорректный формат email")]
         [Display(Name = "Email")]

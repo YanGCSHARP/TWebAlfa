@@ -1,0 +1,122 @@
+﻿@model TWebAlfa5.Models.Product
+
+@{
+    ViewBag.Title = "Детали товара";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Левая колонка - изображение -->
+        <div class="col-md-6">
+            <div class="product-image-container">
+                <img src="@Model.ImageUrl" class="img-fluid main-image" alt="@Model.Name">
+            </div>
+        </div>
+
+        <!-- Правая колонка - информация -->
+        <div class="col-md-6">
+            <h1 class="product-title">@Model.Name</h1>
+            <div class="price-block">
+                <span class="price">@Model.Price.ToString("N2") $</span>
+                <span class="text-muted">Включая НДС</span>
+            </div>
+            <div class="stock-block">
+                <span class="stock-block">@Model.Stock.ToString()</span>
+          
+            </div>
+
+            <!-- Блок кнопок -->
+            <div class="action-buttons mt-4">
+                @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("productId", Model.Id)
+
+                    <div class="input-group mb-3">
+                        <input type="number" name="quantity" value="1" min="1"
+                               class="form-control quantity-input"
+                               style="max-width: 80px">
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            <i class="fas fa-cart-plus"></i> В корзину
+                        </button>
+                    </div>
+                }
+
+                @using (Html.BeginForm("InstantCheckout", "Order", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("productId", Model.Id)
+                    @Html.Hidden("quantity", 1)
+
+                    <button type="submit" class="btn btn-outline-dark btn-lg w-100">
+                        <i class="fas fa-bolt"></i> Купить сейчас
+                    </button>
+                }
+            </div>
+
+            <!-- Описание и характеристики -->
+            <div class="product-details mt-5">
+                <h3>Описание</h3>
+                <p class="text-muted">@Model.Description</p>
+
+                <h3>Характеристики</h3>
+                <dl class="row">
+                    <dt class="col-sm-4">Категория</dt>
+                    <dd class="col-sm-8">@(Model.Category?.Name ?? "Не указана")</dd>
+
+                    <dt class="col-sm-4">Артикул</dt>
+                    <dd class="col-sm-8">@Model.Id</dd>
+
+                    <dt class="col-sm-4">Доступность</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Stock > 0)
+                        {
+                            <span class="text-success">В наличии</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Нет в наличии</span>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+
+    .price-block {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+    }
+
+    .price {
+        font-size: 2rem;
+        color: #dc3545;
+        font-weight: 500;
+    }
+
+    .quantity-input {
+        border-radius: 5px 0 0 5px;
+    }
+
+    .btn-danger {
+        border-radius: 0 5px 5px 0;
+    }
+
+    .product-image-container {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 1rem;
+        background: white;
+    }
+</style>

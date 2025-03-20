@@ -1,39 +1,90 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Главная - LNP Fashion Demon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p>
-        <a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
-    </p>
-</div>
+<div class="container-fluid py-3">
+    <main>
+        <section class="hero">
+            <div class="hero-content text-center">
+                <span class="golden-text">Новая коллекция</span>
+                <p>Откройте для себя уникальный стиль</p>
+                <a href="@Url.Action("Catalog", "Product")" class="btn btn-danger">Смотреть коллекцию</a>
+            </div>
+        </section>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p>
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
-        </p>
-    </div>
+        <section class="features row justify-content-center g-4">
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>По всей Молдове за 1-3 дня</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">💎</div>
+                    <h3>Качество</h3>
+                    <p>Премиальные материалы</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Возврат</h3>
+                    <p>30 дней на обмен и возврат</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="new-arrivals">
+            <h2 class="section-title text-center mb-3">Новинки</h2>
+            <div class="product-slider row justify-content-center g-4">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="product-card featured text-center">
+                        <h3>Стильная футболка</h3>
+                        <p class="price">2999 ₽</p>
+                        <a href="#" class="btn btn-danger">В корзину</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="product-card featured text-center">
+                        <h3>Модные джинсы</h3>
+                        <p class="price">4999 ₽</p>
+                        <a href="#" class="btn btn-danger">В корзину</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2 class="section-title text-center mb-3">Категории</h2>
+            <div class="category-grid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col">
+                    <a href="@Url.Action("Catalog", "Product", new { category = "men" })" class="category-card">
+                        <div class="category-overlay-m text-center">
+                            <div class="category-icon">👔</div>
+                            <h3>Мужская одежда</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="@Url.Action("Catalog", "Product", new { category = "women" })" class="category-card">
+                        <div class="category-overlay-f text-center">
+                            <div class="category-icon">👗</div>
+                            <h3>Женская одежда</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="@Url.Action("Catalog", "Product", new { category = "accessories" })" class="category-card">
+                        <div class="category-overlay-a text-center">
+                            <div class="category-icon">💍</div>
+                            <h3>Аксессуары</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 </div>

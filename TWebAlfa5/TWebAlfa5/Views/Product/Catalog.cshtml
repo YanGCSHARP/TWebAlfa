@@ -1,0 +1,30 @@
+﻿@* Views/Product/Catalog.cshtml *@
+@model IEnumerable<TWebAlfa5.Models.Product>
+
+@{
+    ViewBag.Title = "Каталог товаров";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>@ViewBag.Title</h2>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var product in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@product.Description</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">@product.Price.ToString("N2") $</span>
+                            @Html.ActionLink("Подробнее", "Details", new { id = product.Id }, 
+                                new { @class = "btn btn-outline-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

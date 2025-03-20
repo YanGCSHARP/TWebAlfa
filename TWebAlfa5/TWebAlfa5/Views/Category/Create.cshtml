@@ -1,0 +1,20 @@
+﻿@model TWebAlfa5.Models.Category
+
+@{
+    ViewBag.Title = "Добавить категорию";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-secondary" })
+}

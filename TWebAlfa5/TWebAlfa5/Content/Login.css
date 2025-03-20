@@ -1,0 +1,805 @@
+﻿/* Базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Gothic, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f0;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Логотип и волны */
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.wave-animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><path d="M0 150 Q 100 100, 200 150 T 400 150" stroke="rgba(255,255,255,0.8)" fill="none" stroke-width="2"/><path d="M0 160 Q 100 110, 200 160 T 400 160" stroke="rgba(255,255,255,0.6)" fill="none" stroke-width="2"/><path d="M0 170 Q 100 120, 200 170 T 400 170" stroke="rgba(255,255,255,0.4)" fill="none" stroke-width="2"/><path d="M0 180 Q 100 130, 200 180 T 400 180" stroke="rgba(255,255,255,0.2)" fill="none" stroke-width="2"/></svg>');
+    background-size: cover;
+    background-position: center;
+    animation: waveFloat 3s ease-in-out infinite;
+}
+
+@keyframes waveFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.red-text {
+    color: #ff3366;
+}
+
+.golden-text {
+    font-size: 3rem;
+    font-family: Gothic;
+    color: goldenrod;
+}
+
+.brand-name {
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.2rem;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-subtitle {
+    font-family: 'Times New Roman', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: #888;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+/* Главная страница */
+.hero {
+    height: 50vh;
+    /*background: url('/Content/images/hero-bg.jpg') center/cover no-repeat; !* Убедитесь, что путь к изображению корректен *!*/
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+.features {
+    padding: 2rem 1rem;
+    background: #f8f8f8;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+}
+
+/* Новинки */
+.new-arrivals {
+    padding: 2rem 1rem;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.product-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 300px;
+}
+
+    .product-card.featured {
+        margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+.price {
+    font-size: 1rem;
+    color: #ff3366;
+    margin-bottom: 0.5rem;
+}
+
+/* Категории */
+.categories {
+    padding: 2rem 1rem;
+    background: #f8f8f8;
+}
+
+.category-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.category-card {
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.category-overlay-m, .category-overlay-f, .category-overlay-a {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .category-overlay-m:hover, .category-overlay-f:hover, .category-overlay-a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+.category-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.category-card h3 {
+    font-size: 1.1rem;
+}
+
+/* Личный кабинет */
+.auth-container {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 0; /* Убрал отступ снизу, чтобы футер примыкал ближе */
+}
+
+.auth-form {
+    padding: 1rem;
+}
+
+    .auth-form h3 {
+        margin-bottom: 0.8rem;
+        color: #333;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+/* Формы */
+.form-group {
+    margin-bottom: 0.8rem;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.2rem;
+        color: #333;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff3366;
+            box-shadow: 0 0 0 2px rgba(255, 51, 102, 0.1);
+        }
+
+    .form-group .form-check {
+        margin-bottom: 0.5rem;
+    }
+
+.form-check-input {
+    margin-top: 0.3rem;
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+}
+
+.form-footer {
+    margin-top: 0.6rem;
+    text-align: center;
+}
+
+.forgot-password {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+    .forgot-password:hover {
+        color: #ff3366;
+        text-decoration: underline;
+    }
+
+/* Кнопки */
+.btn-danger {
+    background-color: #ff3366 !important;
+    border-color: #ff3366 !important;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+}
+
+    .btn-danger:hover {
+        background-color: #e61b4d !important;
+        border-color: #e61b4d !important;
+        transform: translateY(-2px);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+/* Информационная страница */
+.info-page {
+    background: #fff;
+}
+
+.info-hero {
+    height: 50vh;
+    /*background: url('/TWebAlfa5/TWebAlfa5/img') center/cover no-repeat;*/
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+    .info-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+.info-hero-content {
+    font-family: Gothic;
+    position: relative;
+    z-index: 1;
+}
+
+    .info-hero-content p {
+        font-size: 1.2rem;
+    }
+
+/* Миссия */
+.mission-section {
+    padding: 2rem 1rem;
+    background: #f8f8f8;
+}
+
+.mission-content {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .mission-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .mission-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+.mission-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff3366;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Ценности */
+.values-section {
+    padding: 2rem 1rem;
+}
+
+    .values-section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+.values-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.value-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.value-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.value-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Команда */
+.team-section {
+    padding: 2rem 1rem;
+    background: #f8f8f8;
+}
+
+    .team-section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Стили для карточек команды */
+.team-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    width: 100%; /* Убедитесь, что блок занимает всю доступную ширину колонки */
+    text-align: center; /* Центрируем текст по умолчанию */
+    margin: 0; /* Убираем все марджины, чтобы блоки примыкали к краям */
+}
+
+/* Убедитесь, что блоки выравниваются по краям на десктопах */
+@media (min-width: 768px) {
+    .team-grid .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .team-grid .d-flex.justify-content-start .team-card {
+        margin-right: auto; /* Прижимаем блок к левому краю */
+    }
+
+    .team-grid .d-flex.justify-content-end .team-card {
+        margin-left: auto; /* Прижимаем блок к правому краю */
+    }
+
+    .team-card.align-self-start {
+        align-self: flex-start; /* Убедимся, что блок прижат к верхнему левому углу */
+    }
+
+    .team-card.align-self-end {
+        align-self: flex-end; /* Убедимся, что блок прижат к верхнему правому углу */
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 767px) {
+    .team-card {
+        text-align: center; /* Центрируем текст на мобильных */
+    }
+
+    .team-grid .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%; /* Убедимся, что на мобильных каждая карточка занимает всю ширину */
+    }
+}
+
+.team-role {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Футер */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.3rem;
+    width: 100%;
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+    margin-top: 0; /* Убрал отступ сверху, чтобы футер примыкал к контенту */
+}
+
+/* Медиа-запросы для адаптивности */
+@media (min-width: 1200px) {
+    .values-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .mission-stats {
+        gap: 2rem;
+    }
+
+    .team-grid {
+        gap: 2rem;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-slider {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mission-stats, .team-grid {
+        flex-direction: column;
+    }
+
+    .info-hero {
+        height: 40vh;
+    }
+
+    .hero {
+        height: 40vh;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .brand-name {
+        font-size: 1.8rem;
+        letter-spacing: 0.15em;
+    }
+
+    .brand-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+    }
+
+    /* Дополнительные стили для навигации */
+    .navbar .d-flex {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #ff3366; /* Красный цвет при наведении, соответствующий стилю LNP Fashion Demon */
+    }
+
+    /* Убедитесь, что "Выход" остаётся справа на десктопах */
+    @media (min-width: 992px) {
+        .navbar-nav.mx-auto {
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .navbar-nav:last-child {
+            margin-left: auto; /* Убедитесь, что "Выход" в правом углу */
+        }
+    }
+
+    /* На мобильных устройствах "Выход" должен быть в конце меню */
+    @media (max-width: 991px) {
+        .navbar-nav {
+            margin-left: 0 !important;
+        }
+    }
+
+    .auth-form {
+        padding: 0.8rem;
+    }
+
+    .form-group label {
+        font-size: 0.8rem;
+    }
+
+    .form-group input {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-danger {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+
+    .feature-card p, .product-card h3, .category-card h3 {
+        font-size: 0.8rem;
+    }
+
+    .price {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-hero {
+        height: 30vh;
+    }
+
+    .hero {
+        height: 30vh;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-content h3, .values-section h3, .team-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .stat-label, .value-card p, .team-card h4, .team-role {
+        font-size: 0.8rem;
+    }
+
+    .value-icon {
+        font-size: 1.8rem;
+    }
+
+    .auth-form h3 {
+        font-size: 1.1rem;
+    }
+
+    .form-group label {
+        font-size: 0.7rem;
+    }
+
+    .form-group input {
+        padding: 0.4rem;
+        font-size: 0.7rem;
+    }
+
+    .btn-danger {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .features, .new-arrivals, .categories {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .feature-icon, .category-icon {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .feature-card, .product-card, .category-overlay-m, .category-overlay-f, .category-overlay-a {
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .brand-name {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+
+    .brand-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+    }
+
+    .mission-content h3, .values-section h3, .team-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .stat-number {
+        font-size: 1.1rem;
+    }
+
+    .stat-label, .value-card p, .team-card h4, .team-role {
+        font-size: 0.7rem;
+    }
+
+    .value-icon {
+        font-size: 1.5rem;
+    }
+
+    .mission-section, .values-section, .team-section {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .auth-form h3 {
+        font-size: 1rem;
+    }
+
+    .form-group label {
+        font-size: 0.6rem;
+    }
+
+    .form-group input {
+        padding: 0.3rem;
+        font-size: 0.6rem;
+    }
+
+    .btn-danger {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.6rem;
+    }
+
+    .footer {
+        padding: 0.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .feature-icon, .category-icon {
+        font-size: 1.5rem;
+    }
+
+    .feature-card h3, .product-card h3, .category-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .feature-card p, .price {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form h3 {
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-size: 0.7rem;
+    }
+
+    .form-group input {
+        padding: 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .btn-danger {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.7rem;
+    }
+}
