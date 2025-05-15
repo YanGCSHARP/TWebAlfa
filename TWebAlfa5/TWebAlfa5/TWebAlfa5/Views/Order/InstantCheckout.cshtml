@@ -1,0 +1,9 @@
+﻿@model  eUseControl.Domain.Models.Order
+
+@{
+    ViewBag.Title = "Мгновенный заказ";
+}
+
+<h2>Ваш заказ оформлен!</h2>
+<p>Номер заказа: <strong>@Model.Id</strong></p>
+<p>Общая сумма: <strong>@Model.TotalPrice.ToString("N2") ₽</strong></p>

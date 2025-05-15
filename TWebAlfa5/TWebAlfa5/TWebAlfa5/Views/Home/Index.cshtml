@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Главная - LNP Fashion Demon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Секция героя -->
+<section class="hero">
+    <div class="hero-content">
+        <h2 class="golden-text">Новая коллекция</h2>
+        <p>Откройте для себя уникальный стиль</p>
+        <a href="@Url.Action("Catalog", "Product")" class="btn btn-danger btn-lg">Смотреть коллекцию</a>
+    </div>
+</section>
+
+<!-- Секция преимуществ -->
+<div class="container">
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Быстрая доставка</h3>
+                <p>По всей Молдове за 1-3 дня</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>Качество</h3>
+                <p>Премиальные материалы</p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Возврат</h3>
+                <p>30 дней на обмен и возврат</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Секция новинок -->
+<div class="container">
+    <h2 class="section-title">Новинки</h2>
+    <div class="row g-4">
+        <div class="col-lg-6 col-md-6">
+            <div class="product-card">
+                <h3>Стильная футболка</h3>
+                <p class="price">2999 ₽</p>
+                <a href="#" class="btn btn-danger">В корзину</a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="product-card">
+                <h3>Модные джинсы</h3>
+                <p class="price">4999 ₽</p>
+                <a href="#" class="btn btn-danger">В корзину</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Секция категорий -->
+<div class="container">
+    <h2 class="section-title">Категории</h2>
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-4">
+            <a href="@Url.Action("Catalog", "Product", new { category = "men" })" class="text-decoration-none">
+                <div class="category-card">
+                    <div class="category-overlay-m">
+                        <div class="category-icon">👔</div>
+                        <h3>Мужская одежда</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <a href="@Url.Action("Catalog", "Product", new { category = "women" })" class="text-decoration-none">
+                <div class="category-card">
+                    <div class="category-overlay-f">
+                        <div class="category-icon">👗</div>
+                        <h3>Женская одежда</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <a href="@Url.Action("Catalog", "Product", new { category = "accessories" })" class="text-decoration-none">
+                <div class="category-card">
+                    <div class="category-overlay-a">
+                        <div class="category-icon">💍</div>
+                        <h3>Аксессуары</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

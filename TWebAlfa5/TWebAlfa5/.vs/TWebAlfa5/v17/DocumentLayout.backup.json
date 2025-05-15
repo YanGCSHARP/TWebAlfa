@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\twebalfa5\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\twebalfa5\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\twebalfa5\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\twebalfa5\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\eusecontrol.businesslogic\\sessionbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\sessionbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\twebalfa5\\twebdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\twebdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\migov\\source\\repos\\twebalfa5\\twebalfa5\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T14:02:26.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAuwG8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T13:49:43.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Content\\style.css",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Content\\style.css",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Content\\style.css",
+              "RelativeToolTip": "TWebAlfa5\\Content\\style.css",
+              "ViewState": "AgIAAAkDAAAAAAAAAAAwwC4DAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-15T13:43:14.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAuwEcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T13:40:32.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SessionBl.cs",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\eUseControl.BusinessLogic\\SessionBl.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\SessionBl.cs",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\eUseControl.BusinessLogic\\SessionBl.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\SessionBl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T13:16:10.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Web.config",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Web.config",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\Web.config",
+              "RelativeToolTip": "TWebAlfa5\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-15T13:10:31.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TWebDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\TWebDbContext.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\TWebDbContext.cs",
+              "ToolTip": "C:\\Users\\migov\\source\\repos\\TWebAlfa5\\TWebAlfa5\\TWebDbContext.cs",
+              "RelativeToolTip": "TWebAlfa5\\TWebDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T13:10:15.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 102,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

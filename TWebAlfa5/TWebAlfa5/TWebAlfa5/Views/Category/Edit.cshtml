@@ -1,0 +1,26 @@
+﻿@model  eUseControl.Domain.Models.Category
+
+@{
+    ViewBag.Title = "Редактировать категорию";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id) <!-- Скрытое поле для Id категории -->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+
+ 
+
+   
+    
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-secondary" })
+}
