@@ -1,0 +1,550 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|c:\\users\\young\\desktop\\twebalfa6\\twebalfa5\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBED5BF2-68AA-4F4B-BB63-8EB2EB0D6D55}|eUseControl.Domain\\eUseControl.Domain.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.domain\\enitites\\user\\ulogindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBED5BF2-68AA-4F4B-BB63-8EB2EB0D6D55}|eUseControl.Domain\\eUseControl.Domain.csproj|solutionrelative:eusecontrol.domain\\enitites\\user\\ulogindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.businesslogic\\core\\adminapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\core\\adminapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.businesslogic\\core\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\core\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.businesslogic\\core\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\core\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.businesslogic\\sessionbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\sessionbl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.businesslogic\\interfaces\\isession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\interfaces\\isession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\eusecontrol.businesslogic\\core\\userapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84BB637-4B35-4AA8-90C0-7DE849CB0A51}|eUseControl.BusinessLogic\\eUseControl.BusinessLogic.csproj|solutionrelative:eusecontrol.businesslogic\\core\\userapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202502171146464_name.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202502171146464_name.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202503111429480_shipping5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202503111429480_shipping5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202503110113192_shipping4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202503110113192_shipping4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202503110059203_shipping3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202503110059203_shipping3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202503110045020_shipping2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202503110045020_shipping2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202503102356518_shipping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202503102356518_shipping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\migrations\\202503070853074_cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\migrations\\202503070853074_cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\twebdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\twebdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\content\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\content\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\content\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\content\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\models\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\models\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\views\\category\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\views\\category\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|C:\\Users\\Young\\Desktop\\TWebAlfa6\\twebalfa5\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A78F69-E383-4F0F-8B32-DE67F663CE58}|TWebAlfa5\\TWebAlfa5.csproj|solutionrelative:twebalfa5\\models\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 383,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ULoginData.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.Domain\\Enitites\\user\\ULoginData.cs",
+              "RelativeDocumentMoniker": "eUseControl.Domain\\Enitites\\user\\ULoginData.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.Domain\\Enitites\\user\\ULoginData.cs",
+              "RelativeToolTip": "eUseControl.Domain\\Enitites\\user\\ULoginData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T10:27:47.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\User.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\Core\\User.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\User.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\Core\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:43:14.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\Core\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\DatabaseContext.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\Core\\DatabaseContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:42:30.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SessionBl.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\SessionBl.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\SessionBl.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\SessionBl.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\SessionBl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:41:10.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminApi.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\AdminApi.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\Core\\AdminApi.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\AdminApi.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\Core\\AdminApi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:40:35.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserApi.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\UserApi.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\Core\\UserApi.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Core\\UserApi.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\Core\\UserApi.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:40:35.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "TWebAlfa5\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAD4v4IAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T10:25:37.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "202502171146464_name.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202502171146464_name.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202502171146464_name.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202502171146464_name.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202502171146464_name.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:46:22.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Isession.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Interfaces\\Isession.cs",
+              "RelativeDocumentMoniker": "eUseControl.BusinessLogic\\Interfaces\\Isession.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\eUseControl.BusinessLogic\\Interfaces\\Isession.cs",
+              "RelativeToolTip": "eUseControl.BusinessLogic\\Interfaces\\Isession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T09:40:35.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "202503111429480_shipping5.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503111429480_shipping5.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202503111429480_shipping5.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503111429480_shipping5.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202503111429480_shipping5.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T14:29:56.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "202503110113192_shipping4.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503110113192_shipping4.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202503110113192_shipping4.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503110113192_shipping4.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202503110113192_shipping4.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T01:13:25.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "202503110059203_shipping3.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503110059203_shipping3.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202503110059203_shipping3.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503110059203_shipping3.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202503110059203_shipping3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:59:27.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "202503110045020_shipping2.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503110045020_shipping2.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202503110045020_shipping2.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503110045020_shipping2.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202503110045020_shipping2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T00:45:09.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "202503102356518_shipping.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503102356518_shipping.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202503102356518_shipping.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503102356518_shipping.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202503102356518_shipping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T23:56:59.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "202503070853074_Cart.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503070853074_Cart.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Migrations\\202503070853074_Cart.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Migrations\\202503070853074_Cart.cs",
+              "RelativeToolTip": "TWebAlfa5\\Migrations\\202503070853074_Cart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T08:53:12.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Models\\Product.cs",
+              "RelativeToolTip": "TWebAlfa5\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T08:49:17.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "TWebAlfa5\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T08:49:12.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TWebDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\TWebDbContext.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\TWebDbContext.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\TWebDbContext.cs",
+              "RelativeToolTip": "TWebAlfa5\\TWebDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T10:57:35.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T18:07:33.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T17:33:09.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T18:08:23.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Register.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Models\\Register.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Models\\Register.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Models\\Register.cs",
+              "RelativeToolTip": "TWebAlfa5\\Models\\Register.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T17:32:51.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Register.css",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Content\\Register.css",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Content\\Register.css",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Content\\Register.css",
+              "RelativeToolTip": "TWebAlfa5\\Content\\Register.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-27T17:32:32.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Models\\Login.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Models\\Login.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Models\\Login.cs",
+              "RelativeToolTip": "TWebAlfa5\\Models\\Login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T10:26:27.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Web.config",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Web.config",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Web.config",
+              "RelativeToolTip": "TWebAlfa5\\Web.config",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAswGAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-02-28T09:51:42.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Category\\Delete.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Category\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Category\\Delete.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Category\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T18:07:47.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T10:50:51.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T18:07:57.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Home\\Contact.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T18:08:22.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "TWebAlfa5\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T19:19:17.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Login.css",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Content\\Login.css",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Content\\Login.css",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Content\\Login.css",
+              "RelativeToolTip": "TWebAlfa5\\Content\\Login.css",
+              "ViewState": "AgIAAAUDAAAAAAAAAAAiwCQDAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-27T10:41:09.677Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Content\\style.css",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Content\\style.css",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Content\\style.css",
+              "RelativeToolTip": "TWebAlfa5\\Content\\style.css",
+              "ViewState": "AgIAAPsCAAAAAAAAAAAQwBEDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-27T10:37:56.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "TWebAlfa5\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Young\\Desktop\\TWebAlfa6\\TWebAlfa5\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "TWebAlfa5\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T10:24:58.827Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

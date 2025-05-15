@@ -1,0 +1,53 @@
+﻿@model TWebAlfa5.Controllers.ProfileViewModel
+
+@{
+    ViewBag.Title = "Профиль";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Профиль</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Адрес доставки</h4>
+            @if (Model.ShippingAddress != null)
+            {
+                <p>
+                    <strong>Имя:</strong> @Model.ShippingAddress.Name<br />
+                    <strong>Телефон:</strong> @Model.ShippingAddress.Phone<br />
+                    <strong>Страна:</strong> @Model.ShippingAddress.Country<br />
+                    <strong>Город:</strong> @Model.ShippingAddress.City<br />
+                    <strong>Адрес:</strong> @Model.ShippingAddress.AddressLine<br />
+                    <strong>Почтовый индекс:</strong> @Model.ShippingAddress.PostalCode
+                </p>
+                @Html.ActionLink("Редактировать адрес", "EditAddress", null, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Добавить адрес доставки", "AddAddress", null, new { @class = "btn btn-success" })
+            }
+        </div>
+        <div class="col-md-6">
+            <h4>Предыдущие заказы</h4>
+            @if (Model.Orders != null && Model.Orders.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var order in Model.Orders)
+                    {
+                        <li class="list-group-item">
+                            <strong>Заказ №:</strong> @order.Id<br />
+                            <strong>Дата:</strong> @order.OrderDate<br />
+                            <strong>Статус:</strong> @order.Status<br />
+                            <strong>Сумма:</strong> @order.TotalPrice.ToString("N2") $
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>У вас пока нет заказов.</p>
+            }
+        </div>
+    </div>
+</div>

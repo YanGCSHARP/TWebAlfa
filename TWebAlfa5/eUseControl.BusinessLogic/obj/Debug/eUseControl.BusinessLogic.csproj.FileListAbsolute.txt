@@ -1,0 +1,12 @@
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.BusinessLogic.dll
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.BusinessLogic.pdb
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.Domain.dll
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.Helpers.dll
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.Domain.pdb
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.Domain.dll.config
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\bin\Debug\eUseControl.Helpers.pdb
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\obj\Debug\eUseControl.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\obj\Debug\eUseControl.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\obj\Debug\eUseCont.F912DA32.Up2Date
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\obj\Debug\eUseControl.BusinessLogic.dll
+C:\Users\Young\Desktop\TWebAlfa6\eUseControl.BusinessLogic\obj\Debug\eUseControl.BusinessLogic.pdb

@@ -1,0 +1,23 @@
+﻿@model  eUseControl.Domain.Models.Category
+
+@{
+    ViewBag.Title = "Удаление категории";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>Вы уверены, что хотите удалить эту категорию?</p>
+
+<table class="table">
+    <tr>
+        <th>Название</th>
+        <td>@Model.Name</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-secondary" })
+}
