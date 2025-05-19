@@ -1,0 +1,8 @@
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\bin\Debug\LNP.Core.dll
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\bin\Debug\LNP.Core.pdb
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\obj\Debug\LNP.Core.csproj.AssemblyReference.cache
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\obj\Debug\LNP.Core.csproj.CoreCompileInputs.cache
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\obj\Debug\LNP.Core.csproj.Up2Date
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\obj\Debug\LNP.Core.dll
+C:\Users\Young\Desktop\C#\LNP\LNP.Core\obj\Debug\LNP.Core.pdb

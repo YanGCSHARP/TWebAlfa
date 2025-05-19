@@ -1,0 +1,275 @@
+﻿@model LNP.Core.DTOs.SignUpDto
+
+@{
+    ViewBag.Title = "Регистрация";
+  
+}
+
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">Создание аккаунта</h2>
+
+            @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { @class = "auth-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "form-label" })
+                    <div class="input-wrapper">
+                        <i class="icon-user"></i>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Введите ваше имя" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                    <div class="input-wrapper">
+                        <i class="icon-email"></i>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Введите ваш email" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                    <div class="input-wrapper">
+                        <i class="icon-lock"></i>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Создайте пароль" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.RepeatPassword, new { @class = "form-label" })
+                    <div class="input-wrapper">
+                        <i class="icon-lock"></i>
+                        @Html.PasswordFor(m => m.RepeatPassword, new { @class = "form-control", placeholder = "Повторите пароль" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.RepeatPassword, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        @Html.CheckBoxFor(m => m.AgreeToTerms, new { @class = "checkbox-input" })
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">Я согласен с условиями использования</span>
+                    </label>
+                    @Html.ValidationMessageFor(m => m.AgreeToTerms, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Зарегистрироваться</button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Уже есть аккаунт? <a href="@Url.Action("SignIn", "Account")" class="link-accent">Войти</a></p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        padding: 20px 0;
+    }
+
+    .auth-container {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .auth-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+    }
+
+    .auth-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #0a192f;
+        text-align: center;
+    }
+
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-wrapper i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #0a192f;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 12px 12px 35px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        color: #000000;
+    }
+
+    .form-control:focus {
+        border-color: #0a192f;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1);
+    }
+
+    .text-danger {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* Checkbox styling */
+    .checkbox-group {
+        margin-top: 15px;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .checkbox-input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkbox-custom {
+        position: relative;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .checkbox-input:checked ~ .checkbox-custom {
+        background-color: #0a192f;
+        border-color: #0a192f;
+    }
+
+    .checkbox-custom:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .checkbox-input:checked ~ .checkbox-custom:after {
+        display: block;
+    }
+
+    .checkbox-text {
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .form-actions {
+        margin-top: 10px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: #0a192f;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #172a46;
+        transform: translateY(-2px);
+    }
+
+    .auth-footer {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .link-accent {
+        color: #0a192f;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .link-accent:hover {
+        color: #172a46;
+        text-decoration: underline;
+    }
+
+    /* Icons */
+    .icon-user::before {
+        content: "👤";
+    }
+
+    .icon-email::before {
+        content: "✉";
+    }
+
+    .icon-lock::before {
+        content: "🔒";
+    }
+
+    @@media (max-width: 480px) {
+        .auth-card {
+            padding: 30px 20px;
+        }
+    }
+</style>
