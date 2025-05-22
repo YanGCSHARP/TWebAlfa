@@ -1,0 +1,32 @@
+﻿@model LNP.Core.DTOs.CategoryDto
+
+@{
+    ViewBag.Title = "Редактирование категории";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Response.ContentType = "text/html; charset=utf-8";
+}
+
+<link href="~/Content/admin-styles.css" rel="stylesheet" />
+
+<div class="admin-container">
+    <div class="admin-header">
+        <h2 class="admin-title">Редактирование категории</h2>
+    </div>
+
+    @using (Html.BeginForm("EditCategory", "Admin", FormMethod.Post, new { @class = "admin-form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="admin-actions">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            @Html.ActionLink("Отмена", "Categories", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

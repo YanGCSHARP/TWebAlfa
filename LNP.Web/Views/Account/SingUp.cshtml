@@ -1,0 +1,49 @@
+@model LNP.Core.DTOs.SignUpDto
+
+
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "_Layout";
+}
+
+<h2>Регистрация</h2>
+
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RepeatPassword)
+        @Html.PasswordFor(m => m.RepeatPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RepeatPassword, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.AgreeToTerms) Я согласен с условиями использования
+                @Html.ValidationMessageFor(m => m.AgreeToTerms, "", new { @class = "text-danger" })
+            </label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+}

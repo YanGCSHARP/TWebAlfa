@@ -1,0 +1,32 @@
+﻿@model LNP.Core.DTOs.CategoryDto
+
+@{
+    ViewBag.Title = "Детали категории";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Response.ContentType = "text/html; charset=utf-8";
+}
+
+<link href="~/Content/admin-styles.css" rel="stylesheet" />
+
+<div class="admin-container">
+    <div class="admin-header">
+        <h2 class="admin-title">@Model.Name</h2>
+        <div class="admin-actions">
+            @Html.ActionLink("Назад к списку", "Categories", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+
+    <div class="detail-card">
+        <dl class="detail-list">
+            <div class="detail-item">
+                <dt class="detail-label">ID:</dt>
+                <dd class="detail-value">@Model.Id</dd>
+            </div>
+
+            <div class="detail-item">
+                <dt class="detail-label">Количество товаров:</dt>
+                <dd class="detail-value">@ViewBag.ProductCount</dd>
+            </div>
+        </dl>
+    </div>
+</div>

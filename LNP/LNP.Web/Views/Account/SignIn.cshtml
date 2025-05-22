@@ -1,0 +1,185 @@
+﻿@model LNP.Core.DTOs.SignInDto
+
+@{
+    ViewBag.Title = "Вход";
+    
+}
+
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">Вход в аккаунт</h2>
+
+            @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { @class = "auth-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                    <div class="input-wrapper">
+                        <i class="icon-email"></i>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Введите ваш email" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                    <div class="input-wrapper">
+                        <i class="icon-lock"></i>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Введите ваш пароль" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Войти</button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Нет аккаунта? <a href="@Url.Action("SignUp", "Account")" class="link-accent">Зарегистрируйтесь</a></p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .auth-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        padding: 20px 0;
+    }
+
+    .auth-container {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .auth-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+    }
+
+    .auth-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #0a192f;
+        text-align: center;
+    }
+
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-wrapper i {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #0a192f;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 12px 12px 35px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        color: #000000;
+    }
+
+    .form-control:focus {
+        border-color: #0a192f;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1);
+    }
+
+    .text-danger {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .form-actions {
+        margin-top: 10px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background-color: #0a192f;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #172a46;
+        transform: translateY(-2px);
+    }
+
+    .auth-footer {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .link-accent {
+        color: #0a192f;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .link-accent:hover {
+        color: #172a46;
+        text-decoration: underline;
+    }
+
+    /* Icons */
+    .icon-email::before {
+        content: "✉";
+    }
+
+    .icon-lock::before {
+        content: "🔒";
+    }
+
+    @@media (max-width: 480px) {
+        .auth-card {
+            padding: 30px 20px;
+        }
+    }
+</style>
