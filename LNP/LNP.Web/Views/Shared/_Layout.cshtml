@@ -1,20 +1,35 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - LNP | Legacy Never Passes</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: #000000;
-            padding-top: 0;
-            margin: 0;
+        }
+
+        .body-content {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         /* Header & Navigation */
@@ -33,6 +48,7 @@
             padding: 20px 0;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .brand {
@@ -115,20 +131,13 @@
             width: 100%;
         }
 
-        /* Main Content */
-        .body-content {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: calc(100vh - 200px);
-        }
-
         /* Footer */
         .site-footer {
+            flex-shrink: 0;
             background-color: #0a192f;
             color: #ffffff;
             padding: 40px 0;
-            margin-top: 60px;
+            margin-top: auto;
         }
 
         .footer-container {
@@ -206,52 +215,71 @@
 
         /* Responsive */
         @@media (max-width: 768px) {
-            .header-container {
-                padding: 15px 20px;
-            }
+        .header-container {
+            padding: 15px 20px;
+        }
 
-            .navbar-toggle {
-                display: block;
-            }
+        .navbar-toggle {
+            display: block;
+            z-index: 10;
+        }
 
-            .nav-menu {
-                position: absolute;
-                top: 80px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background-color: #ffffff;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                display: none;
-            }
+        .navbar-toggle.active .icon-bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
 
-            .nav-menu.active {
-                display: flex;
-            }
+        .navbar-toggle.active .icon-bar:nth-child(2) {
+            opacity: 0;
+        }
 
-            .nav-item {
-                margin: 10px 0;
-            }
+        .navbar-toggle.active .icon-bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
 
-            .footer-section {
-                margin-right: 30px;
-            }
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ffffff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 5;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-item {
+            margin: 10px 0;
+        }
+
+        .body-content {
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .site-footer {
+            padding: 30px 0;
+        }
         }
 
         @@media (max-width: 480px) {
-            .brand-tagline {
-                display: none;
-            }
+        .brand-tagline {
+            display: none;
+        }
 
-            .footer-container {
-                flex-direction: column;
-            }
+        .footer-container {
+            flex-direction: column;
+        }
 
-            .footer-section {
-                margin-right: 0;
-                width: 100%;
-            }
+        .footer-section {
+            margin-right: 0;
+            width: 100%;
+        }
         }
     </style>
 </head>
@@ -274,6 +302,9 @@
                 <a href="@Url.Action("Index", "Home")" class="nav-link">Главная</a>
             </li>
             <li class="nav-item">
+                <a href="@Url.Action("Index", "Catalog")" class="nav-link">Каталог</a>
+            </li>
+            <li class="nav-item">
                 <a href="@Url.Action("About", "Home")" class="nav-link">О нас</a>
             </li>
             <li class="nav-item">
@@ -286,6 +317,12 @@
                 </li>
                 <li class="nav-item">
                     <a href="@Url.Action("SignUp", "Account")" class="nav-link">Регистрация</a>
+                </li>
+            }
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a href="@Url.Action("Products", "Admin")" class="nav-link">AdminPanel</a>
                 </li>
             }
             @if (Request.IsAuthenticated)
@@ -356,6 +393,7 @@
 
         navbarToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
         });
     });
 </script>

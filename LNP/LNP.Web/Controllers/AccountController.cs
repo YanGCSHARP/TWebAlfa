@@ -23,6 +23,7 @@ namespace LNP.Web.Controllers
         public ActionResult SignUp() => View();
         
         
+        
         [HttpPost]
         public async Task<ActionResult> SignIn(SignInDto signInDto)
         {
@@ -30,19 +31,13 @@ namespace LNP.Web.Controllers
                 return View(signInDto);
 
             bool isAuthenticated = await _authService.SignInAsync(signInDto);
+            
     
             if (isAuthenticated)
             {
-                // Получаем пользователя по email
-                var user = await _userRepo.GetByEmailAsync(signInDto.Email);
-        
-                if (user != null)
-                {
-                    FormsAuthentication.SetAuthCookie(user.Email, false);
-                    return RedirectToAction("Index", "Home");
-                }
+                return RedirectToAction("Index", "Home");
             }
-    
+
             ModelState.AddModelError("", "Неверный email или пароль");
             return View(signInDto);
         }

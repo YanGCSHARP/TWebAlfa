@@ -4,6 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Security;
 using LNP.BuisnessLogic.Helper;
 using LNP.Core.DTOs;
 using LNP.Core.Entities;
@@ -39,6 +41,8 @@ namespace LNP.BuisnessLogic.Services
 
             if (await _userRepo.GetByEmailAsync(dto.Email) != null)
                 return false;
+            
+            
 
             var user = new UserEf
             {
@@ -49,15 +53,39 @@ namespace LNP.BuisnessLogic.Services
                 AgreeToTerms = dto.AgreeToTerms,
                 Role = dto.Role // Установка роли
             };
+            
+            var userData = $"{user.Id}|{user.Role}";
 
             await _userRepo.CreateAsync(user);
             return true;
         }
 
+        // AuthService.cs
+        // AuthService.cs
+        // AuthService.cs
         public async Task<bool> SignInAsync(SignInDto dto)
         {
             var user = await _userRepo.GetByEmailAsync(dto.Email);
-            return user != null && _hasher.VerifyPassword(dto.Password, user.HashPassword);
+            if (user == null || !_hasher.VerifyPassword(dto.Password, user.HashPassword))
+                return false;
+
+            // Сохраняем ID и роль через разделитель "|"
+            var userData = $"{user.Id:N}|{user.Role}";
+    
+            var ticket = new FormsAuthenticationTicket(
+                version: 2,
+                name: user.Email,
+                issueDate: DateTime.Now,
+                expiration: DateTime.Now.AddHours(1),
+                isPersistent: false,
+                userData: userData);
+
+            // Остальной код без изменений
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            HttpContext.Current.Response.Cookies.Add(cookie);
+
+            return true;
         }
         
         public string GenerateJwtToken(UserEf user)

@@ -41,16 +41,36 @@
         <Reference Include="System.ComponentModel.DataAnnotations" />
         <Reference Include="System.Core"/>
         <Reference Include="System.Data"/>
+        <Reference Include="System.Web" />
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Class1.cs"/>
+        <Compile Include="DTOs\AddressDto.cs" />
+        <Compile Include="DTOs\CartItemDto.cs" />
+        <Compile Include="DTOs\CategoryDto.cs" />
+        <Compile Include="DTOs\GroupedProductsDto.cs" />
+        <Compile Include="DTOs\PaymentDto.cs" />
+        <Compile Include="DTOs\ProductDto.cs" />
         <Compile Include="DTOs\SingInDto.cs" />
         <Compile Include="DTOs\SingUpDto.cs" />
+        <Compile Include="Entities\CartItemEf.cs" />
+        <Compile Include="Entities\CategoryEf.cs" />
+        <Compile Include="Entities\OrderEf.cs" />
+        <Compile Include="Entities\OrderItemEf.cs" />
+        <Compile Include="Entities\PaymentEf.cs" />
+        <Compile Include="Entities\ProductEf.cs" />
         <Compile Include="Entities\UserEf.cs" />
         <Compile Include="Enums\UserRole.cs" />
+        <Compile Include="Interfaces\Repositories\ICartRepository.cs" />
+        <Compile Include="Interfaces\Repositories\ICategoryRepository.cs" />
+        <Compile Include="Interfaces\Repositories\IOrderRepository.cs" />
+        <Compile Include="Interfaces\Repositories\IProductRepository.cs" />
         <Compile Include="Interfaces\Repositories\IuserRepository.cs" />
         <Compile Include="Interfaces\Services\IAuthService.cs" />
+        <Compile Include="Interfaces\Services\ICategoryService.cs" />
+        <Compile Include="Interfaces\Services\IImageService.cs" />
+        <Compile Include="Interfaces\Services\IProductService.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>

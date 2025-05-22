@@ -89,8 +89,20 @@
     <Compile Include="Migrations\202505182053580_auth.Designer.cs">
       <DependentUpon>202505182053580_auth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505182223045_Products.cs" />
+    <Compile Include="Migrations\202505182223045_Products.Designer.cs">
+      <DependentUpon>202505182223045_Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505190158401_Cart.cs" />
+    <Compile Include="Migrations\202505190158401_Cart.Designer.cs">
+      <DependentUpon>202505190158401_Cart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CartRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +118,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202505182053580_auth.resx">
       <DependentUpon>202505182053580_auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505182223045_Products.resx">
+      <DependentUpon>202505182223045_Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505190158401_Cart.resx">
+      <DependentUpon>202505190158401_Cart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

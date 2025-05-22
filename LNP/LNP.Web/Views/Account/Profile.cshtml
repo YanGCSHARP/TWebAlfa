@@ -1,0 +1,49 @@
+﻿@model LNP.Core.Entities.UserEf
+
+@{
+    ViewBag.Title = "Профиль пользователя";
+}
+
+<h2>Профиль</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Личные данные</div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Имя:</dt>
+                    <dd class="col-sm-8">@Model.Name</dd>
+
+                    <dt class="col-sm-4">Email:</dt>
+                    <dd class="col-sm-8">@Model.Email</dd>
+                </dl>
+                @Html.ActionLink("Редактировать", "EditProfile", null, new { @class = "btn btn-outline-primary" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Адрес доставки</div>
+            <div class="card-body">
+                @if (!string.IsNullOrEmpty(Model.Address))
+                {
+                    <address>
+                        @Model.Address<br>
+                        @Model.City, @Model.PostalCode<br>
+                        @Model.Country
+                    </address>
+                }
+                else
+                {
+                    <p>Адрес не указан</p>
+                }
+                @Html.ActionLink("Изменить адрес", "Address", "Checkout", null, new { @class = "btn btn-outline-primary" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="mt-4">История заказов</h3>
+@Html.Action("OrderHistory", "Account")

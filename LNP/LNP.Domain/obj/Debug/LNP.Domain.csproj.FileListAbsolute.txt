@@ -37,3 +37,5 @@ C:\Users\Young\Desktop\C#\LNP\LNP.Domain\obj\Debug\LNP.Domain.dll
 C:\Users\Young\Desktop\C#\LNP\LNP.Domain\obj\Debug\LNP.Domain.pdb
 C:\Users\Young\Desktop\C#\LNP\LNP.Domain\obj\Debug\LNP.Domain.Migrations.auth.resources
 C:\Users\Young\Desktop\C#\LNP\LNP.Domain\obj\Debug\LNP.Domain.csproj.GenerateResource.cache
+C:\Users\Young\Desktop\C#\LNP\LNP.Domain\obj\Debug\LNP.Domain.Migrations.Products.resources
+C:\Users\Young\Desktop\C#\LNP\LNP.Domain\obj\Debug\LNP.Domain.Migrations.Cart.resources
