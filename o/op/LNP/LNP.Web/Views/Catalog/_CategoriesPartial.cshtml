@@ -1,0 +1,16 @@
+﻿@model IEnumerable<LNP.Core.DTOs.CategoryDto>
+
+<div class="list-group">
+    @Html.ActionLink("Все категории", "Index", "Catalog", null, new { 
+        @class = "list-group-item list-group-item-action" + 
+                 (ViewBag.SelectedCategoryId == null ? " active" : "") 
+    })
+    
+    @foreach (var category in Model)
+    {
+        @Html.ActionLink(category.Name, "Index", "Catalog", 
+            new { categoryId = category.Id }, 
+            new { @class = "list-group-item list-group-item-action" + 
+                           (ViewBag.SelectedCategoryId == category.Id ? " active" : "") })
+    }
+</div>

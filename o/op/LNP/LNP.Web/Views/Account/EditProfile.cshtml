@@ -1,0 +1,55 @@
+﻿@model LNP.Core.DTOs.UserProfileDto
+
+@{
+    ViewBag.Title = "Редактирование профиля";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-0 pt-3 pb-3">
+                    <h2 class="fw-bold mb-0">@ViewBag.Title</h2>
+                </div>
+                <div class="card-body p-4">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success mb-4">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+                    
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Name, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.Name)
+                        </div>
+                        
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                        
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber)
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                                <i class="bi bi-save me-2"></i> Сохранить изменения
+                            </button>
+                            @Html.ActionLink("Отмена", "Profile", null, new { @class = "btn btn-outline-secondary btn-lg rounded-pill" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
