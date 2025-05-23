@@ -1,0 +1,96 @@
+﻿@model LNP.Core.DTOs.AddressDto
+
+@{
+    ViewBag.Title = "Редактирование адреса";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-0 pt-4 pb-0">
+                    <h2 class="fw-bold">@ViewBag.Title</h2>
+                </div>
+                <div class="card-body p-4">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success rounded-3 d-flex align-items-center" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <div>@TempData["SuccessMessage"]</div>
+                        </div>
+                    }
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    @Html.LabelFor(m => m.Address, new { @class = "form-label fw-semibold" })
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-house"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control border-start-0", placeholder = "Введите адрес" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger small mt-1" })
+                                </div>
+
+                                <div class="mb-4">
+                                    @Html.LabelFor(m => m.City, new { @class = "form-label fw-semibold" })
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-building"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.City, new { @class = "form-control border-start-0", placeholder = "Введите город" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger small mt-1" })
+                                </div>
+
+                                <div class="mb-4">
+                                    @Html.LabelFor(m => m.PostalCode, new { @class = "form-label fw-semibold" })
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-mailbox"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control border-start-0", placeholder = "Введите почтовый индекс" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger small mt-1" })
+                                </div>
+
+                                <div class="mb-4">
+                                    @Html.LabelFor(m => m.Country, new { @class = "form-label fw-semibold" })
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-globe"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.Country, new { @class = "form-control border-start-0", placeholder = "Введите страну" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger small mt-1" })
+                                </div>
+
+                                <div class="d-flex justify-content-between mt-4">
+                                    @Html.ActionLink("Отмена", "Profile", null, new { @class = "btn btn-outline-secondary rounded-pill px-4" })
+                                    <button type="submit" class="btn btn-primary rounded-pill px-4">
+                                        <i class="bi bi-check2 me-1"></i> Сохранить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-control:focus, .input-group-text {
+        box-shadow: none;
+        border-color: #dee2e6;
+    }
+    .input-group-text {
+        color: #6c757d;
+    }
+</style>

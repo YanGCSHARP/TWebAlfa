@@ -1,40 +1,43 @@
 ﻿@model LNP.Core.DTOs.AddressDto
-
 @{
     ViewBag.Title = "Адрес доставки";
 }
 
-<h2>Введите адрес доставки</h2>
+<div class="container py-5">
+    <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
-{
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                @Html.LabelFor(m => m.Address, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Address)
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Address, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.City)
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.PostalCode, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PostalCode)
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Country, new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Country)
+                </div>
+
+                <button type="submit" class="btn btn-primary">Сохранить адрес</button>
             </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.City)
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(m => m.PostalCode, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.PostalCode)
-            </div>
-
-            <div class="mb-3">
-                @Html.LabelFor(m => m.Country, new { @class = "form-label" })
-                @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Country)
-            </div>
-
-            <button type="submit" class="btn btn-primary">Продолжить</button>
         </div>
-    </div>
-}
+    }
+</div>

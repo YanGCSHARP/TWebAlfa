@@ -5,15 +5,7 @@
     <div class="product-details">
         <div class="row g-0">
             <!-- Breadcrumb navigation -->
-            <div class="col-12 mb-4">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Главная</a></li>
-                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Catalog")">Каталог</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
-                    </ol>
-                </nav>
-            </div>
+            
 
             <!-- Product image -->
             <div class="col-lg-6 mb-4 mb-lg-0">
@@ -57,10 +49,15 @@
 
                     <!-- Action buttons -->
                     <div class="product-actions">
-                        <button class="btn-buy">
-                            <i class="fas fa-credit-card"></i>
-                            <span>Купить сейчас</span>
-                        </button>
+                        @using (Html.BeginForm("AddAndCheckout", "Cart", FormMethod.Post))
+                        {
+                            @Html.Hidden("id", Model.Id)
+                            <input type="hidden" name="quantity" id="quantityInputCheckout" value="1">
+                            <button type="submit" class="btn-buy">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Купить сейчас</span>
+                            </button>
+                        }
                         @using (Html.BeginForm("AddItem", "Cart", FormMethod.Post))
                         {
                             @Html.Hidden("id", Model.Id)
@@ -323,6 +320,37 @@
         line-height: 1.8;
         font-size: 0.95rem;
     }
+    /* Добавьте анимацию для кнопок */
+    .btn-buy, .btn-cart {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-buy:active, .btn-cart:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Добавьте состояние загрузки */
+    .btn-loading {
+        position: relative;
+        pointer-events: none;
+    }
+
+    .btn-loading:after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid transparent;
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
 
     /* Responsive adjustments */
     @@media (max-width: 991px) {
@@ -363,6 +391,7 @@
         document.getElementById('quantityInput').value = newValue;
 
         // Update the quantity in the "Add to Cart" link
+        
         const addToCartBtn = document.getElementById('addToCartBtn');
         const currentHref = addToCartBtn.getAttribute('href');
         const baseUrl = currentHref.split('&')[0];

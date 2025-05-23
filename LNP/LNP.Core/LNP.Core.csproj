@@ -54,6 +54,7 @@
         <Compile Include="DTOs\ProductDto.cs" />
         <Compile Include="DTOs\SingInDto.cs" />
         <Compile Include="DTOs\SingUpDto.cs" />
+        <Compile Include="DTOs\UserProfileDto.cs" />
         <Compile Include="Entities\CartItemEf.cs" />
         <Compile Include="Entities\CategoryEf.cs" />
         <Compile Include="Entities\OrderEf.cs" />

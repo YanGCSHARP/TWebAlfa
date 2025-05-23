@@ -19,6 +19,7 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
+            padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: #000000;
@@ -28,8 +29,8 @@
             flex: 1 0 auto;
             width: 100%;
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0 auto; /* Изменено с 40px на 0 */
+            padding: 20px;
         }
 
         /* Header & Navigation */
@@ -39,13 +40,16 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%; /* Добавлено */
+            margin: 0; /* Добавлено */
+            padding: 0;
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -96,6 +100,7 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         .nav-item {
@@ -110,6 +115,9 @@
             padding: 8px 0;
             position: relative;
             transition: all 0.3s ease;
+            display: flex;
+            align-content: center;
+            height: 100%;
         }
 
         .nav-link:after {
@@ -254,7 +262,10 @@
         }
 
         .nav-item {
-            margin: 10px 0;
+            margin: 0 15px;
+            display: flex;
+            align-items: center;
+            height: 40px;
         }
 
         .body-content {
@@ -281,9 +292,136 @@
             width: 100%;
         }
         }
+
+        /* Стили для выпадающего меню профиля */
+        .profile-dropdown {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-link {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .profile-link i {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        .profile-dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .profile-dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #0a192f;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+            color: #0a192f;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: #e9ecef;
+            margin: 5px 0;
+        }
+
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Для мобильных устройств */
+        @@media (max-width: 768px) {
+        .profile-dropdown-menu {
+            position: static;
+            box-shadow: none;
+            border-radius: 0;
+            padding-left: 15px;
+            animation: none;
+        }
+
+        .profile-text {
+            display: inline;
+        }
+        }
+
+        @@media (min-width: 769px) {
+        .profile-text {
+            display: none;
+        }
+
+        .profile-link i {
+            margin-right: 0;
+        }
+        }
     </style>
 </head>
 <body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Существующий код для мобильного меню
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navbarToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
+        });
+
+        // Новый код для выпадающего меню профиля
+        const profileDropdown = document.getElementById('profileDropdown');
+        const profileMenu = document.getElementById('profileMenu');
+
+        if (profileDropdown && profileMenu) {
+            profileDropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                profileMenu.classList.toggle('active');
+            });
+
+            // Закрыть меню при клике вне его
+            document.addEventListener('click', function(e) {
+                if (!profileDropdown.contains(e.target) && !profileMenu.contains(e.target)) {
+                    profileMenu.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>
 <header class="site-header">
     <div class="header-container">
         <a href="@Url.Action("Index", "Home")" class="brand">
@@ -327,8 +465,27 @@
             }
             @if (Request.IsAuthenticated)
             {
-                <li class="nav-item">
-                    <a href="@Url.Action("LogOut", "Account")" class="nav-link">Выход</a>
+                
+                
+                <li class="nav-item profile-dropdown">
+                    <a href="#" class="nav-link profile-link" id="profileDropdown" aria-label="Профиль пользователя">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <div class="profile-dropdown-menu" id="profileMenu">
+                        <a href="@Url.Action("Profile", "Account")" class="dropdown-item">
+                            <i class="fas fa-user"></i> Мой профиль
+                        </a>
+                        <a href="@Url.Action("OrderHistory", "Account")" class="dropdown-item">
+                            <i class="fas fa-shopping-bag"></i> История заказов
+                        </a>
+                        <a href="@Url.Action("EditAddress", "Account")" class="dropdown-item">
+                            <i class="fas fa-map-marker-alt"></i> Адрес доставки
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("Logout", "Account")" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Выйти
+                        </a>
+                    </div>
                 </li>
             }
         </ul>

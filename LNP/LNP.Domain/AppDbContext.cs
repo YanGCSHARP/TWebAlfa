@@ -13,7 +13,7 @@ namespace LNP.Domain
         public DbSet<CartItemEf> CartItems { get; set; }
         public DbSet<OrderEf> Orders { get; set; }
         public DbSet<OrderItemEf> OrderItems { get; set; }
-        public DbSet<PaymentEf> Payments { get; set; }  // Теперь используем PaymentEf
+        public DbSet<PaymentEf> Payments { get; set; }  
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

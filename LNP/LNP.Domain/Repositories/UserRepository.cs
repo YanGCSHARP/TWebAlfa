@@ -2,6 +2,7 @@
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using LNP.Core.DTOs;
 using LNP.Core.Interfaces.Repositories;
 
 namespace LNP.Domain.Repositories
@@ -15,7 +16,7 @@ namespace LNP.Domain.Repositories
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        // Добавляем реализацию GetByIdAsync
+       
         public async Task<UserEf> GetByIdAsync(Guid userId)
         {
             return await _context.Users.FindAsync(userId);
@@ -27,7 +28,7 @@ namespace LNP.Domain.Repositories
             await _context.SaveChangesAsync();
         }
 
-        // Добавляем метод обновления
+        
         public async Task UpdateAsync(UserEf user)
         {
             _context.Entry(user).State = EntityState.Modified;
@@ -39,6 +40,31 @@ namespace LNP.Domain.Repositories
             return await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == email && u.HashPassword == password);
         }
+        
+        public async Task UpdateAddressAsync(Guid userId, AddressDto address)
+        {
+            using (var context = new AppDbContext())
+            {
+                var user = await context.Users.FindAsync(userId);
+                if (user != null)
+                {
+                    user.Address = address.Address;
+                    user.City = address.City;
+                    user.PostalCode = address.PostalCode;
+                    user.Country = address.Country;
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+        public async Task UpdateUserAsync(UserEf user)
+        {
+            using (var context = new AppDbContext())
+            {
+                context.Entry(user).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+        }
+            
         
         
     }

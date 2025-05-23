@@ -26,7 +26,7 @@ namespace LNP.Web.Controllers
 
         
         [HttpGet]
-        public async Task<ActionResult> Details(Guid? id) // Делаем Guid nullable
+        public async Task<ActionResult> Details(Guid? id) 
         {
             if (!id.HasValue)
             {
@@ -61,7 +61,7 @@ namespace LNP.Web.Controllers
                 .ToList();
 
             ViewBag.Categories = categories;
-            ViewBag.GroupedProducts = groupedProducts; // Теперь это List<GroupedProductsDto>
+            ViewBag.GroupedProducts = groupedProducts; 
             ViewBag.SelectedCategory = categoryId;
 
             return View();

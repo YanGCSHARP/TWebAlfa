@@ -13,12 +13,12 @@ namespace LNP.Web.Controllers
         private readonly ProductService _productService = new ProductService();
         private readonly CategoryService _categoryService = new CategoryService();
 
-        // Products
+      
         public async Task<ActionResult> Products()
         {
             
             var categories = await _categoryService.GetAllCategoriesAsync();
-            // Исправлено: использование правильного метода из сервиса
+            
             var products = await _productService.GetAllProductsAsync();
             ViewBag.Categories = categories;
             return View(products);
@@ -27,7 +27,7 @@ namespace LNP.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> CreateProduct()
         {
-            // Исправлено: преобразование к DTO
+           
             ViewBag.Categories = (await _categoryService.GetAllCategoriesAsync())
                                 .ConvertAll(c => new CategoryDto { Id = c.Id, Name = c.Name });
             return View();
@@ -45,7 +45,7 @@ namespace LNP.Web.Controllers
                     return View(dto);
                 }
 
-                // Исправлено: использование асинхронного метода
+                
                 await _productService.CreateProductAsync(dto);
                 return RedirectToAction("Products");
             }
@@ -60,7 +60,7 @@ namespace LNP.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> EditProduct(Guid id)
         {
-            // Исправлено: использование правильного метода
+            
             var product = await _productService.GetProductByIdAsync(id);
             ViewBag.Categories = (await _categoryService.GetAllCategoriesAsync())
                                 .ConvertAll(c => new CategoryDto { Id = c.Id, Name = c.Name });
@@ -89,7 +89,7 @@ namespace LNP.Web.Controllers
                     return View(dto);
                 }
 
-                // Исправлено: использование асинхронного метода
+                
                 await _productService.UpdateProductAsync(dto);
                 return RedirectToAction("Products");
             }
@@ -104,12 +104,12 @@ namespace LNP.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> DeleteProduct(Guid id)
         {
-            // Исправлено: использование правильного метода
+            
             await _productService.DeleteProductAsync(id);
             return RedirectToAction("Products");
         }
 
-        // Категории
+       
         public async Task<ActionResult> Categories()
         {
             var categories = await _categoryService.GetAllCategoriesAsync();
@@ -124,7 +124,7 @@ namespace LNP.Web.Controllers
         {
             try
             {
-                // Исправлено: использование асинхронного метода
+                
                 await _categoryService.CreateCategoryAsync(dto);
                 return RedirectToAction("Categories");
             }
@@ -203,6 +203,6 @@ namespace LNP.Web.Controllers
             }
         }
 
-        // Остальные методы для категорий...
+        
     }
 }

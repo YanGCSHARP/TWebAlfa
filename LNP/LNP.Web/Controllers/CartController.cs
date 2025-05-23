@@ -14,6 +14,7 @@ namespace LNP.Web.Controllers
     {
         private readonly CartService _cartService;
         private readonly ProductService _productService = new ProductService();
+        private readonly UserContextService _userContext = new UserContextService();
         
 
         public CartController()
@@ -27,7 +28,7 @@ namespace LNP.Web.Controllers
             
         }
 
-        // Просмотр корзины
+       
         public async Task<ActionResult> Index()
         {
             var userId = GetCurrentUserId();
@@ -35,7 +36,7 @@ namespace LNP.Web.Controllers
             return View(cartItems);
         }
 
-        // CartController.cs
+        
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> AddItem(Guid id, int quantity = 1)
@@ -48,19 +49,19 @@ namespace LNP.Web.Controllers
             }
             catch (Exception ex)
             {
-                // Логирование ошибки
+                
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
-        // Обновление количества
+        
         [HttpPost]
         public async Task<ActionResult> UpdateQuantity(Guid itemId, int quantity)
         {
             try
             {
                 var userId = GetCurrentUserId();
-                await _cartService.UpdateQuantityAsync(itemId, quantity, userId); // Добавляем userId
+                await _cartService.UpdateQuantityAsync(itemId, quantity, userId); 
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -70,47 +71,35 @@ namespace LNP.Web.Controllers
             }
         }
 
-        // Удаление товара
+        
         [HttpPost]
         public async Task<ActionResult> RemoveItem(Guid itemId)
         {
             var userId = GetCurrentUserId();
-            await _cartService.RemoveItemAsync(itemId, userId); // Добавляем userId
+            await _cartService.RemoveItemAsync(itemId, userId); 
             return RedirectToAction("Index");
         }
-        
-        
-        // CartController.cs
-        // CartController.cs
-        private Guid GetCurrentUserId()
+        [HttpPost]
+        public async Task<ActionResult> AddAndCheckout(Guid id, int quantity = 1)
         {
-            if (!User.Identity.IsAuthenticated)
-                throw new UnauthorizedAccessException("User not authenticated");
-
-            var authCookie = HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie == null || string.IsNullOrEmpty(authCookie.Value))
-                throw new UnauthorizedAccessException("Authentication cookie not found");
-
             try
             {
-                var ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                if (ticket == null || string.IsNullOrEmpty(ticket.UserData))
-                    throw new InvalidOperationException("Invalid authentication ticket");
-
-                var userDataParts = ticket.UserData.Split('|');
-                if (userDataParts.Length < 1)
-                    throw new InvalidOperationException("User data format incorrect");
-
-                if (!Guid.TryParseExact(userDataParts[0], "N", out var userId))
-                    throw new InvalidOperationException("Invalid GUID format in user data");
-
-                return userId;
+                var userId = GetCurrentUserId();
+                await _cartService.AddToCartAsync(userId, id, quantity);
+                return RedirectToAction("Index", "Checkout");
             }
             catch (Exception ex)
             {
-                // Добавьте здесь логирование ошибки
-                throw new InvalidOperationException("Error retrieving user data", ex);
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("Details", "Catalog", new { id });
             }
+        }
+        
+        
+        
+        private Guid GetCurrentUserId()
+        {
+            return _userContext.GetCurrentUserId();
         }
     }
 }

@@ -28,13 +28,13 @@ namespace LNP.Domain.Repositories
                 .ToListAsync();
         }
 
-        // ProductRepository.cs
+       
         public async Task<List<ProductEf>> GetAllAsync()
         {
             using (var context = new AppDbContext())
             {
                 return await context.Products
-                    .Include(p => p.Category) // Добавляем загрузку категорий
+                    .Include(p => p.Category) 
                     .ToListAsync();
             }
         }

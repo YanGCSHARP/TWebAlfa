@@ -45,7 +45,6 @@ namespace LNP.Domain.Repositories
             }
         }
         
-        // CartRepository.cs
         public async Task<CartItemEf> GetCartItemAsync(Guid itemId)
         {
             return await _context.CartItems

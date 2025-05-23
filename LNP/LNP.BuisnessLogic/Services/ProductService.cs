@@ -1,4 +1,4 @@
-﻿// ProductService.cs
+﻿
 using LNP.Core.DTOs;
 using LNP.Core.Entities;
 using LNP.Core.Interfaces.Repositories;
@@ -14,7 +14,7 @@ namespace LNP.BuisnessLogic.Services
 {
     public class ProductService : IProductService
     {
-        // Исправлено: используем конкретную реализацию вместо интерфейса для ImageService
+        
         private readonly IProductRepository _productRepository = new ProductRepository();
         private readonly ICategoryRepository _categoryRepository = new CategoryRepository();
         private readonly ImageService _imageService = new ImageService(); // Убрали интерфейс
@@ -28,7 +28,7 @@ namespace LNP.BuisnessLogic.Services
 
         public async Task<List<ProductDto>> GetAllProductsAsync()
         {
-            // Добавляем реализацию GetAllAsync в репозиторий
+            
             var products = await _productRepository.GetAllAsync();
             return products.ConvertAll(MapToDto);
         }
@@ -42,7 +42,7 @@ namespace LNP.BuisnessLogic.Services
         public async Task CreateProductAsync(ProductDto dto)
         {
             ValidateProduct(dto);
-            // Исправлено: синхронный вызов для сохранения изображения
+            
             var imageUrl = _imageService.SaveImage(dto.ImageFile);
             
             var product = new ProductEf

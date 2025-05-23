@@ -24,7 +24,7 @@ namespace LNP.BuisnessLogic.Services
         
         public AuthService()
         {
-            _userRepo = new UserRepository(); // Убедитесь, что UserRepository имеет конструктор без параметров
+            _userRepo = new UserRepository(); 
             _hasher = new Hasher();
         }
 
@@ -46,12 +46,12 @@ namespace LNP.BuisnessLogic.Services
 
             var user = new UserEf
             {
-                Id = Guid.NewGuid(), // Генерация Guid
+                Id = Guid.NewGuid(), 
                 Name = dto.Name,
                 Email = dto.Email,
                 HashPassword = _hasher.HashPassword(dto.Password),
                 AgreeToTerms = dto.AgreeToTerms,
-                Role = dto.Role // Установка роли
+                Role = dto.Role 
             };
             
             var userData = $"{user.Id}|{user.Role}";
@@ -60,16 +60,14 @@ namespace LNP.BuisnessLogic.Services
             return true;
         }
 
-        // AuthService.cs
-        // AuthService.cs
-        // AuthService.cs
+       
         public async Task<bool> SignInAsync(SignInDto dto)
         {
             var user = await _userRepo.GetByEmailAsync(dto.Email);
             if (user == null || !_hasher.VerifyPassword(dto.Password, user.HashPassword))
                 return false;
 
-            // Сохраняем ID и роль через разделитель "|"
+            
             var userData = $"{user.Id:N}|{user.Role}";
     
             var ticket = new FormsAuthenticationTicket(
@@ -80,7 +78,7 @@ namespace LNP.BuisnessLogic.Services
                 isPersistent: false,
                 userData: userData);
 
-            // Остальной код без изменений
+         
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             HttpContext.Current.Response.Cookies.Add(cookie);
@@ -97,7 +95,7 @@ namespace LNP.BuisnessLogic.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim("id", user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role.ToString()) // Добавление роли в токен
+                    new Claim(ClaimTypes.Role, user.Role.ToString()) 
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)

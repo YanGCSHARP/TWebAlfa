@@ -3,6 +3,7 @@ using LNP.Core.Interfaces.Repositories;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using LNP.Domain.Repositories;
 
 namespace LNP.BuisnessLogic.Services
 {
@@ -22,24 +23,21 @@ namespace LNP.BuisnessLogic.Services
             _productRepo = productRepo;
         }
 
-        public async Task<Guid> CreateOrderAsync(Guid userId, string address)
+        public async Task<Guid> CreateOrder(Guid userId)
         {
-            var cartItems = await _cartRepo.GetUserCartAsync(userId);
-            if (cartItems.Count == 0)
-                throw new Exception("Корзина пуста");
+            var cartRepo = new CartRepository();
+            var userRepo = new UserRepository();
+            var productRepo = new ProductRepository();
 
-            // Обновляем остатки товаров
-            foreach (var item in cartItems)
-            {
-                var product = await _productRepo.GetByIdAsync(item.ProductId);
-                product.StockQuantity -= item.Quantity;
-                await _productRepo.UpdateAsync(product);
-            }
+            var cartItems = await cartRepo.GetUserCartAsync(userId);
+            var user = await userRepo.GetByIdAsync(userId);
 
             var order = new OrderEf
             {
                 UserId = userId,
-                ShippingAddress = address,
+                ShippingAddress = $"{user.Address}, {user.City}",
+                OrderDate = DateTime.Now,
+                Status = OrderStatus.Pending,
                 Items = cartItems.Select(i => new OrderItemEf
                 {
                     ProductId = i.ProductId,
@@ -48,8 +46,12 @@ namespace LNP.BuisnessLogic.Services
                 }).ToList()
             };
 
-            await _orderRepo.CreateOrderAsync(order);
-            await _cartRepo.ClearCartAsync(userId);
+            order.TotalAmount = order.Items.Sum(i => i.Price * i.Quantity);
+
+            var orderRepo = new OrderRepository();
+            await orderRepo.CreateOrderAsync(order);
+            await cartRepo.ClearCartAsync(userId);
+
             return order.Id;
         }
     }

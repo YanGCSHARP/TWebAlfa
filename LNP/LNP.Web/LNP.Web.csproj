@@ -193,6 +193,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Account\EditAddress.cshtml" />
+    <Content Include="Views\Account\EditProfile.cshtml" />
+    <Content Include="Views\Account\OrderHistory.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
@@ -210,6 +213,8 @@
     <Content Include="Views\Catalog\Index.cshtml" />
     <Content Include="Views\Catalog\_CategoriesPartial.cshtml" />
     <Content Include="Views\Checkout\Address.cshtml" />
+    <Content Include="Views\Checkout\Confirmation.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
