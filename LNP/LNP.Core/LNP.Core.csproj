@@ -69,9 +69,11 @@
         <Compile Include="Interfaces\Repositories\IProductRepository.cs" />
         <Compile Include="Interfaces\Repositories\IuserRepository.cs" />
         <Compile Include="Interfaces\Services\IAuthService.cs" />
+        <Compile Include="Interfaces\Services\ICartService.cs" />
         <Compile Include="Interfaces\Services\ICategoryService.cs" />
         <Compile Include="Interfaces\Services\IImageService.cs" />
         <Compile Include="Interfaces\Services\IProductService.cs" />
+        <Compile Include="Interfaces\Services\IUserService.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>

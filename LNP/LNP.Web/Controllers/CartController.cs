@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Security;
+using LNP.Core.Interfaces.Services;
 using LNP.Domain.Repositories;
 
 namespace LNP.Web.Controllers
@@ -12,21 +13,11 @@ namespace LNP.Web.Controllers
     [Authorize]
     public class CartController : Controller
     {
-        private readonly CartService _cartService;
-        private readonly ProductService _productService = new ProductService();
-        private readonly UserContextService _userContext = new UserContextService();
+        private readonly ICartService _cartService = new CartService(new CartRepository(), new ProductRepository(), new UserRepository());
+        private readonly IUserService _userContext = new UserService();
         
 
-        public CartController()
-        {
-            _cartService = new CartService(
-                new CartRepository(), 
-                new ProductRepository(),
-                new UserRepository()
-            );
-            
-            
-        }
+        
 
        
         public async Task<ActionResult> Index()

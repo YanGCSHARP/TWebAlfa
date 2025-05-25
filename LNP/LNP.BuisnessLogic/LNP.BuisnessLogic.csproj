@@ -287,7 +287,7 @@
         <Compile Include="Services\OrderService.cs" />
         <Compile Include="Services\PaymentService.cs" />
         <Compile Include="Services\ProductService.cs" />
-        <Compile Include="Services\UserContextService.cs" />
+        <Compile Include="Services\UserService.cs" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\LNP.Core\LNP.Core.csproj">

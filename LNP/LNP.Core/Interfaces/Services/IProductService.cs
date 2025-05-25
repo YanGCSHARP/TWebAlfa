@@ -13,5 +13,7 @@ namespace LNP.Core.Interfaces.Services
         Task UpdateProductAsync(ProductDto dto);
         Task DeleteProductAsync(Guid id);
         Task<ProductDto> GetProductByIdAsync(Guid id);
+        
+        Task<List<ProductDto>> GetProductsByCategoryAsync(Guid categoryId);
     }
 }

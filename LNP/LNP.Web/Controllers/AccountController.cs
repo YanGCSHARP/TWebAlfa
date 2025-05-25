@@ -16,7 +16,7 @@ namespace LNP.Web.Controllers
     {
         private readonly IAuthService _authService = new AuthService();
         private readonly IUserRepository _userRepo = new UserRepository();
-        private readonly UserContextService _userContext = new UserContextService();
+        private readonly IUserService _userService = new UserService();
         private readonly IOrderRepository _orderRepo = new OrderRepository(); 
         
         [HttpGet]
@@ -78,7 +78,7 @@ namespace LNP.Web.Controllers
 
         private Guid GetCurrentUserId()
         {
-            return _userContext.GetCurrentUserId();
+            return _userService.GetCurrentUserId();
         }
         
         public ActionResult Logout()

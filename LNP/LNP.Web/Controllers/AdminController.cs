@@ -4,14 +4,15 @@ using LNP.Core.DTOs;
 using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using LNP.Core.Interfaces.Services;
 
 namespace LNP.Web.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly ProductService _productService = new ProductService();
-        private readonly CategoryService _categoryService = new CategoryService();
+        private readonly IProductService _productService = new ProductService();
+        private readonly ICategoryService _categoryService = new CategoryService();
 
       
         public async Task<ActionResult> Products()

@@ -6,12 +6,18 @@ using LNP.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LNP.Core.Interfaces.Services;
 
 namespace LNP.BuisnessLogic.Services
 {
-    public class CategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository = new CategoryRepository();
+
+        public Task<List<CategoryEf>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task CreateCategoryAsync(CategoryDto dto)
         {

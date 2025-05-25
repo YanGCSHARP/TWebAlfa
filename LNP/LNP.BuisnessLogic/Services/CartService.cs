@@ -4,11 +4,12 @@ using LNP.Core.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LNP.Core.Interfaces.Services;
 using LNP.Domain.Repositories;
 
 namespace LNP.BuisnessLogic.Services
 {
-    public class CartService
+    public class CartService : ICartService
     {
         private readonly ICartRepository _cartRepo;
         private readonly IProductRepository _productRepo;

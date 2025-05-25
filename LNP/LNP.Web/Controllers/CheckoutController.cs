@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using LNP.Core.Interfaces.Repositories;
+using LNP.Core.Interfaces.Services;
 using LNP.Domain.Repositories;
 
 namespace LNP.Web.Controllers
@@ -13,7 +14,7 @@ namespace LNP.Web.Controllers
     
     public class CheckoutController : Controller
     {
-        private readonly UserContextService _userContext = new UserContextService();
+        private readonly IUserService _userService = new UserService();
         public async Task<ActionResult> Index()
         {
             var userId = GetCurrentUserId();
@@ -66,7 +67,7 @@ namespace LNP.Web.Controllers
 
         private Guid GetCurrentUserId()
         {
-            return _userContext.GetCurrentUserId();
+            return _userService.GetCurrentUserId();
         }
         [HttpPost]
         public async Task<ActionResult> ProcessPayment(PaymentDto dto)

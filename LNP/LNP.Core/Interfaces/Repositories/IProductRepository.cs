@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LNP.Core.DTOs;
 
 namespace LNP.Core.Interfaces.Repositories
 {
@@ -9,6 +10,8 @@ namespace LNP.Core.Interfaces.Repositories
     {
         Task<ProductEf> GetByIdAsync(Guid id);
         Task<List<ProductEf>> GetByCategoryAsync(Guid categoryId);
+
+        
         
         Task<List<ProductEf>> GetAllAsync();
         

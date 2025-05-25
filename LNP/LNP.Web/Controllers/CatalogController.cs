@@ -7,15 +7,16 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using LNP.Core.Interfaces.Repositories;
+using LNP.Core.Interfaces.Services;
 using LNP.Domain.Repositories;
 
 namespace LNP.Web.Controllers
 {
     public class CatalogController : Controller
     {
-        private readonly CategoryService _categoryService = new CategoryService();
-        private readonly ProductService _productService = new ProductService();
-        private readonly ICategoryRepository _categoryRepository = new CategoryRepository();
+        private readonly ICategoryService _categoryService = new CategoryService();
+        private readonly IProductService _productService = new ProductService();
+        
         
         [ChildActionOnly]
         public async Task<ActionResult> Categories()
