@@ -23,7 +23,7 @@
                     <h1 class="product-title">@Model.Name</h1>
 
                     <div class="product-meta">
-                        <div class="product-price">@Model.Price.ToString("C")</div>
+                        <div class="product-price">@Model.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</div>
                         <div class="stock-status">
                             <i class="fas fa-check-circle"></i>
                             <span>В наличии</span>

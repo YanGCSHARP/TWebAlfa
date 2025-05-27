@@ -4,128 +4,200 @@
     ViewBag.Title = "Профиль пользователя";
 }
 
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-4 mb-4">
-            <div class="card border-0 shadow-sm rounded-3 mb-4">
-                <div class="card-body text-center p-4">
-                    <div class="avatar-circle mb-3 mx-auto">
-                        <span class="avatar-initials">@(user != null && !string.IsNullOrEmpty(user.Name) ? user.Name.Substring(0, 1).ToUpper() : "U")</span>
+<div class="profile-wrapper">
+    <!-- Hero Section -->
+    <div class="profile-hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar-section">
+                    <div class="avatar-wrapper">
+                        <div class="avatar-circle">
+                            <span class="avatar-initials">@(user != null && !string.IsNullOrEmpty(user.Name) ? user.Name.Substring(0, 1).ToUpper() : "U")</span>
+                        </div>
+                        <div class="avatar-ring"></div>
                     </div>
-                    <h3 class="fw-bold mb-1">@(user != null ? user.Name : "Пользователь")</h3>
-                    <p class="text-muted">@(user != null ? user.Email : "")</p>
-                    <div class="d-grid gap-2 mt-4">
-                        <a href="@Url.Action("EditProfile")" class="btn btn-outline-primary rounded-pill">
-                            <i class="bi bi-pencil me-1"></i> Редактировать профиль
-                        </a>
+                    <div class="profile-info">
+                        <h1 class="profile-name">@(user != null ? user.Name : "Пользователь")</h1>
+                        <p class="profile-email">@(user != null ? user.Email : "")</p>
+                        <div class="profile-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Premium Member</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-header bg-white border-0 pt-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="fw-bold mb-0">Адрес доставки</h5>
-                        @Html.ActionLink("Изменить", "EditAddress", "Account", null, new { @class = "btn btn-sm btn-outline-primary rounded-pill" })
-                    </div>
-                </div>
-                <div class="card-body p-4">
-                    @if (user != null && !string.IsNullOrEmpty(user.Address))
-                    {
-                        <div class="d-flex">
-                            <div class="me-3 text-primary">
-                                <i class="bi bi-geo-alt fs-4"></i>
-                            </div>
-                            <address class="mb-0">
-                                <strong>@(user.Name)</strong><br>
-                                @user.Address<br>
-                                @user.City, @user.PostalCode<br>
-                                @user.Country
-                            </address>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="text-center py-3">
-                            <i class="bi bi-house-x text-muted fs-3 mb-2"></i>
-                            <p class="mb-0">Адрес не указан</p>
-                        </div>
-                    }
+                <div class="profile-actions">
+                    <a href="@Url.Action("EditProfile")" class="btn btn-elegant">
+                        <i class="fas fa-edit"></i>
+                        Редактировать профиль
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-header bg-white border-0 pt-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="fw-bold mb-0">История заказов</h5>
-                        <a href="/orders" class="btn btn-sm btn-outline-primary rounded-pill">
-                            Все заказы
-                        </a>
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">@(orders != null ? orders.Count() : 0)</h3>
+                        <p class="stat-label">Заказов</p>
                     </div>
                 </div>
-                <div class="card-body p-0">
-                    @if (orders != null && orders.Any())
-                    {
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0">
-                                <thead class="table-light">
-                                <tr>
-                                    <th>№ заказа</th>
-                                    <th>Дата</th>
-                                    <th>Статус</th>
-                                    <th class="text-end">Сумма</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach (var order in orders.Take(5))
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">@(orders != null ? orders.Sum(o => o.TotalAmount).ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")) : "0")</h3>
+                        <p class="stat-label">Потрачено</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">VIP</h3>
+                        <p class="stat-label">Статус</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number">@DateTime.Now.Year</h3>
+                        <p class="stat-label">С нами</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="profile-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Address Section -->
+                <div class="content-card address-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Адрес доставки
+                        </h2>
+                        @Html.ActionLink("Изменить", "EditAddress", "Account", null, new { @class = "btn btn-outline-elegant btn-sm" })
+                    </div>
+                    <div class="card-body">
+                        @if (user != null && !string.IsNullOrEmpty(user.Address))
+                        {
+                            <div class="address-display">
+                                <div class="address-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="address-details">
+                                    <h4 class="address-title">Основной адрес</h4>
+                                    <address class="address-text">
+                                        <strong>@user.Name</strong><br>
+                                        @user.Address<br>
+                                        @user.City, @user.PostalCode<br>
+                                        @user.Country
+                                    </address>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h4>Адрес не указан</h4>
+                                <p>Добавьте адрес для быстрого оформления заказов</p>
+                                @Html.ActionLink("Добавить адрес", "EditAddress", "Account", null, new { @class = "btn btn-elegant" })
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Orders Section -->
+                <div class="content-card orders-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i class="fas fa-shopping-bag"></i>
+                            История заказов
+                        </h2>
+                        <a href="/Account/OrderHistory" class="btn btn-outline-elegant btn-sm">
+                            Все заказы
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        @if (orders != null && orders.Any())
+                        {
+                            <div class="orders-list">
+                                @foreach (var order in orders.Take(4))
                                 {
-                                    <tr>
-                                        <td>
-                                            <a href="#" class="text-decoration-none fw-semibold">
-                                                #@order.Id.ToString().Substring(0, 8)
-                                            </a>
-                                        </td>
-                                        <td>@order.OrderDate.ToString("dd.MM.yyyy")</td>
-                                        <td>
+                                    <div class="order-item">
+                                        <div class="order-main">
+                                            <div class="order-number">
+                                                <h4>#@order.Id.ToString().Substring(0, 8)</h4>
+                                                <span class="order-date">@order.OrderDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("ru-RU"))</span>
+                                            </div>
+                                            <div class="order-amount">
+                                                <span class="amount">@order.TotalAmount.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
+                                            </div>
+                                        </div>
+                                        <div class="order-status-section">
                                             @{
-                                                string badgeClass = "bg-primary";
+                                                string statusClass = "status-pending";
+                                                string statusIcon = "fas fa-clock";
                                                 if (order.Status.ToString() == "Доставлен")
                                                 {
-                                                    badgeClass = "bg-success";
+                                                    statusClass = "status-delivered";
+                                                    statusIcon = "fas fa-check-circle";
                                                 }
                                                 else if (order.Status.ToString() == "В обработке")
                                                 {
-                                                    badgeClass = "bg-warning text-dark";
+                                                    statusClass = "status-processing";
+                                                    statusIcon = "fas fa-cog";
                                                 }
                                                 else if (order.Status.ToString() == "Отправлен")
                                                 {
-                                                    badgeClass = "bg-info text-dark";
+                                                    statusClass = "status-shipped";
+                                                    statusIcon = "fas fa-truck";
                                                 }
                                                 else if (order.Status.ToString() == "Отменен")
                                                 {
-                                                    badgeClass = "bg-danger";
+                                                    statusClass = "status-cancelled";
+                                                    statusIcon = "fas fa-times-circle";
                                                 }
                                             }
-                                            <span class="badge @badgeClass rounded-pill">@order.Status</span>
-                                        </td>
-                                        <td class="text-end fw-bold">@order.TotalAmount.ToString("C")</td>
-                                    </tr>
+                                            <div class="status-badge @statusClass">
+                                                <i class="@statusIcon"></i>
+                                                <span>@order.Status</span>
+                                            </div>
+                                            <button class="btn btn-ghost btn-sm">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 }
-                                </tbody>
-                            </table>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="text-center py-5">
-                            <i class="bi bi-bag-x fs-1 text-muted mb-3"></i>
-                            <h5>У вас пока нет заказов</h5>
-                            <p class="text-muted">Когда вы сделаете заказ, он появится здесь</p>
-                            <a href="/catalog" class="btn btn-primary rounded-pill px-4 mt-2">Перейти к покупкам</a>
-                        </div>
-                    }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h4>У вас пока нет заказов</h4>
+                                <p>Откройте для себя нашу коллекцию изысканной одежды</p>
+                                <a href="/catalog" class="btn btn-elegant">Перейти к покупкам</a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,28 +205,529 @@
 </div>
 
 <style>
+    .profile-wrapper {
+        background: #f9f9f9;
+        min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .profile-hero {
+        background: linear-gradient(135deg, #0a192f 0%, #172a46 100%);
+        position: relative;
+        padding: 80px 0 60px;
+        overflow: hidden;
+    }
+
+    .hero-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+            radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.3;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .profile-avatar-section {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .avatar-wrapper {
+        position: relative;
+    }
+
     .avatar-circle {
-        width: 80px;
-        height: 80px;
-        background-color: #4e73df;
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
         border-radius: 50%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .avatar-initials {
-        color: white;
-        font-size: 32px;
-        font-weight: bold;
+        color: #ffffff;
+        font-size: 48px;
+        font-weight: 700;
+        font-family: 'Playfair Display', serif;
     }
 
-    .card {
+    .avatar-ring {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .profile-info {
+        color: #ffffff;
+    }
+
+    .profile-name {
+        font-size: 42px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        font-family: 'Playfair Display', serif;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .profile-email {
+        font-size: 18px;
+        opacity: 0.9;
+        margin: 0 0 15px 0;
+        font-weight: 300;
+    }
+
+    .profile-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(212, 175, 55, 0.2);
+        border: 1px solid #d4af37;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #d4af37;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-elegant {
+        background: #ffffff;
+        color: #0a192f;
+        border: 2px solid #ffffff;
+    }
+
+    .btn-elegant:hover {
+        background: transparent;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline-elegant {
+        background: transparent;
+        color: #0a192f;
+        border: 2px solid #0a192f;
+    }
+
+    .btn-outline-elegant:hover {
+        background: #0a192f;
+        color: #ffffff;
+    }
+
+    .btn-ghost {
+        background: transparent;
+        color: #555555;
+        border: 1px solid #e0e0e0;
+    }
+
+    .btn-ghost:hover {
+        background: #f9f9f9;
+        color: #0a192f;
+    }
+
+    .btn-sm {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    /* Stats Section */
+    .stats-section {
+        padding: 40px 0;
+        background: #ffffff;
+        margin-top: -30px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 20px;
+    }
+
+    .stat-card {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        border: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
         transition: all 0.3s ease;
     }
 
-    .card:hover {
+    .stat-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        box-shadow: 0 10px 30px rgba(10, 25, 47, 0.15);
+        border-color: #0a192f;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        background: #0a192f;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 24px;
+    }
+
+    .stat-number {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 5px 0;
+        color: #000000;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #555555;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Content Section */
+    .profile-content {
+        padding: 60px 0;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .content-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        border: 1px solid #e0e0e0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .content-card:hover {
+        box-shadow: 0 10px 30px rgba(10, 25, 47, 0.15);
+        border-color: #0a192f;
+    }
+
+    .card-header {
+        padding: 30px 30px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 0;
+        padding-bottom: 20px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000000;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .card-title i {
+        color: #0a192f;
+        font-size: 20px;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    /* Address Display */
+    .address-display {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 25px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        border-left: 4px solid #0a192f;
+    }
+
+    .address-icon {
+        width: 50px;
+        height: 50px;
+        background: #0a192f;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .address-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #000000;
+        margin: 0 0 8px 0;
+    }
+
+    .address-text {
+        font-size: 15px;
+        color: #555555;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Orders List */
+    .orders-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .order-item {
+        padding: 25px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        border-left: 4px solid #0a192f;
+        transition: all 0.3s ease;
+    }
+
+    .order-item:hover {
+        background: #f0f0f0;
+        transform: translateX(5px);
+    }
+
+    .order-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .order-number h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000000;
+        margin: 0 0 5px 0;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .order-date {
+        font-size: 13px;
+        color: #555555;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .amount {
+        font-size: 20px;
+        font-weight: 700;
+        color: #0a192f;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .order-status-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Status Badges */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-delivered {
+        background: #e8f5e8;
+        color: #2e7d32;
+        border: 1px solid #4caf50;
+    }
+
+    .status-processing {
+        background: #fff3e0;
+        color: #ef6c00;
+        border: 1px solid #ff9800;
+    }
+
+    .status-shipped {
+        background: #e3f2fd;
+        color: #1565c0;
+        border: 1px solid #2196f3;
+    }
+
+    .status-pending {
+        background: #f5f5f5;
+        color: #616161;
+        border: 1px solid #9e9e9e;
+    }
+
+    .status-cancelled {
+        background: #ffebee;
+        color: #c62828;
+        border: 1px solid #f44336;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #555555;
+    }
+
+    .empty-state i {
+        font-size: 64px;
+        margin-bottom: 20px;
+        opacity: 0.3;
+        color: #0a192f;
+    }
+
+    .empty-state h4 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #000000;
+        margin: 0 0 10px 0;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .empty-state p {
+        margin: 0 0 30px 0;
+        font-size: 16px;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .profile-avatar-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+    }
+
+    @@media (max-width: 768px) {
+    .profile-hero {
+        padding: 60px 0 40px;
+    }
+
+    .profile-name {
+        font-size: 32px;
+    }
+
+    .avatar-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .avatar-initials {
+        font-size: 40px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .order-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .order-status-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    }
+
+    @@media (max-width: 576px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .address-display {
+        flex-direction: column;
+        text-align: center;
+    }
     }
 </style>

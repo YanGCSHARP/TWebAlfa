@@ -32,10 +32,10 @@
                                     <h5 class="card-title">@item.Name</h5>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <span class="h5">@item.Price.ToString("C")</span>
+                                            <span class="h5">@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
                                             <span class="text-muted">x @item.Quantity</span>
                                             <div class="text-success mt-1">
-                                                Итого: @item.TotalPrice.ToString("C")
+                                                Итого: @item.TotalPrice.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))
                                             </div>
                                         </div>
                                         <div class="d-flex gap-2">
@@ -83,7 +83,7 @@
                         <div class="d-flex justify-content-between mb-4">
                             <span>Общая сумма:</span>
                             <span class="h4 text-primary">
-                                @Model.Sum(i => i.TotalPrice).ToString("C")
+                                @Model.Sum(i => i.TotalPrice).ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))
                             </span>
                         </div>
                         <a href="@Url.Action("Index", "Checkout")"

@@ -1,13 +1,535 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>Error</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена - LNP | Legacy Never Passes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<hgroup>
-    <h1>Error.</h1>
-    <h2>An error occurred while processing your request.</h2>
-</hgroup>
+    <!-- Error Hero Section -->
+    <section class="error-hero">
+        <div class="error-hero-content">
+            <div class="error-container">
+                <div class="error-content">
+                    <div class="error-code">404</div>
+                    <h1 class="error-title">Страница не найдена</h1>
+                    <p class="error-subtitle">Похоже, что страница, которую вы ищете, исчезла так же загадочно, как этот котик в капюшоне</p>
+                    
+                    <div class="error-actions">
+                        <a href="/" class="btn-primary">
+                            <i class="fas fa-home"></i>
+                            Вернуться на главную
+                        </a>
+                        <a href="/catalog" class="btn-secondary">
+                            <i class="fas fa-shopping-bag"></i>
+                            Перейти к покупкам
+                        </a>
+                    </div>
+
+                    <div class="error-help">
+                        <h3>Что можно сделать?</h3>
+                        <ul class="help-list">
+                            <li><i class="fas fa-check"></i> Проверьте правильность введенного адреса</li>
+                            <li><i class="fas fa-check"></i> Воспользуйтесь поиском по сайту</li>
+                            <li><i class="fas fa-check"></i> Вернитесь на главную страницу</li>
+                            <li><i class="fas fa-check"></i> Свяжитесь с нами, если проблема повторяется</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="error-image">
+                    <div class="meme-container">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kwYS4MUxwJymy2pwIwgoDPwahBJdxd.png" alt="Загадочный котик в капюшоне говорит ОКАК" class="meme-image">
+                        <div class="meme-caption">
+                            <p>Даже наш загадочный котик в недоумении от этой ошибки</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links-section">
+        <div class="quick-links-container">
+            <h2 class="section-title">Популярные разделы</h2>
+            <div class="quick-links-grid">
+                <a href="/" class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Главная</h3>
+                    <p>Вернуться на главную страницу</p>
+                </a>
+
+                <a href="/catalog" class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>Каталог</h3>
+                    <p>Просмотреть всю коллекцию</p>
+                </a>
+
+                <a href="/about" class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h3>О нас</h3>
+                    <p>Узнать больше о бренде</p>
+                </a>
+
+                <a href="/contact" class="quick-link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Контакты</h3>
+                    <p>Связаться с нами</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="error-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>LNP</h2>
+                    <p>Legacy Never Passes</p>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2024 LNP | Legacy Never Passes. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Error Hero Section */
+        .error-hero {
+            flex: 1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .error-hero-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .error-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .error-content {
+            max-width: 500px;
+        }
+
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: #0a192f;
+            line-height: 1;
+            margin-bottom: 20px;
+            opacity: 0.1;
+        }
+
+        .error-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #0a192f;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .error-subtitle {
+            font-size: 18px;
+            color: #666666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Error Actions */
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #0a192f;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #172a46;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 25, 47, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #0a192f;
+            border: 2px solid #0a192f;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0a192f;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Error Help */
+        .error-help {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-help h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #0a192f;
+            margin-bottom: 15px;
+        }
+
+        .help-list {
+            list-style: none;
+        }
+
+        .help-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .help-list li i {
+            color: #28a745;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+
+        /* Error Image */
+        .error-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .meme-container {
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meme-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(10, 25, 47, 0.05), rgba(10, 25, 47, 0.02));
+            pointer-events: none;
+        }
+
+        .meme-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .meme-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .meme-caption {
+            font-style: italic;
+            color: #666666;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Quick Links Section */
+        .quick-links-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .quick-links-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #0a192f;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .quick-link-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px 25px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .link-icon {
+            background-color: #0a192f;
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .quick-link-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0a192f;
+            margin-bottom: 10px;
+        }
+
+        .quick-link-card p {
+            font-size: 14px;
+            color: #666666;
+            margin: 0;
+        }
+
+        /* Footer */
+        .error-footer {
+            background-color: #0a192f;
+            color: #ffffff;
+            padding: 30px 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .footer-text p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .error-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-title {
+                font-size: 32px;
+            }
+
+            .error-actions {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @@media (max-width: 480px) {
+            .error-hero {
+                padding: 40px 0;
+            }
+
+            .error-code {
+                font-size: 60px;
+            }
+
+            .error-title {
+                font-size: 28px;
+            }
+
+            .error-subtitle {
+                font-size: 16px;
+            }
+
+            .meme-container {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        /* Animation */
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@keyframes mysteriousGlow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(10, 25, 47, 0.3);
+            }
+        }
+
+        .error-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .meme-container {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .meme-image {
+            animation: mysteriousGlow 3s ease-in-out infinite;
+        }
+
+        .quick-link-card {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .quick-link-card:nth-child(1) { animation-delay: 0.1s; }
+        .quick-link-card:nth-child(2) { animation-delay: 0.2s; }
+        .quick-link-card:nth-child(3) { animation-delay: 0.3s; }
+        .quick-link-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
 </body>
 </html>

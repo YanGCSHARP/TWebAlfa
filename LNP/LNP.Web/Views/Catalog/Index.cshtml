@@ -51,7 +51,7 @@
                                         <h5 class="product-title">@product.Name</h5>
                                         <p class="product-description">@(product.Description?.Length > 100 ? product.Description.Substring(0, 100) + "..." : product.Description)</p>
                                         <div class="d-flex justify-content-between align-items-center mt-2">
-                                            <span class="product-price">@product.Price.ToString("C")</span>
+                                            <span class="product-price">@product.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
                                         </div>
                                     </div>
                                 </div>

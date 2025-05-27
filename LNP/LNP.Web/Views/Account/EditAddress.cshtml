@@ -4,93 +4,533 @@
     ViewBag.Title = "Редактирование адреса";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-header bg-white border-0 pt-4 pb-0">
-                    <h2 class="fw-bold">@ViewBag.Title</h2>
+<!-- Address Hero Section -->
+<section class="address-hero">
+    <div class="address-hero-content">
+        <h1 class="address-hero-title">Адрес доставки</h1>
+        <p class="address-hero-subtitle">Управление адресом для доставки заказов</p>
+    </div>
+</section>
+
+<!-- Address Edit Section -->
+<section class="address-edit-section">
+    <div class="address-edit-container">
+        <div class="address-edit-card">
+            <div class="address-edit-header">
+                <h2 class="section-title">@ViewBag.Title</h2>
+                <p class="section-subtitle">Укажите точный адрес для быстрой и безопасной доставки</p>
+            </div>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="success-text">@TempData["SuccessMessage"]</div>
                 </div>
-                <div class="card-body p-4">
-                    @if (TempData["SuccessMessage"] != null)
-                    {
-                        <div class="alert alert-success rounded-3 d-flex align-items-center" role="alert">
-                            <i class="bi bi-check-circle-fill me-2"></i>
-                            <div>@TempData["SuccessMessage"]</div>
+            }
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="address-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Address, "Адрес", new { @class = "form-label" })
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-input", placeholder = "Улица, дом, квартира" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "error-message" })
                         </div>
-                    }
+                    </div>
 
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mb-4">
-                                    @Html.LabelFor(m => m.Address, new { @class = "form-label fw-semibold" })
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-house"></i>
-                                        </span>
-                                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control border-start-0", placeholder = "Введите адрес" })
-                                    </div>
-                                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger small mt-1" })
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.City, "Город", new { @class = "form-label" })
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <i class="fas fa-building"></i>
                                 </div>
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-input", placeholder = "Название города" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.City, "", new { @class = "error-message" })
+                        </div>
 
-                                <div class="mb-4">
-                                    @Html.LabelFor(m => m.City, new { @class = "form-label fw-semibold" })
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-building"></i>
-                                        </span>
-                                        @Html.TextBoxFor(m => m.City, new { @class = "form-control border-start-0", placeholder = "Введите город" })
-                                    </div>
-                                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger small mt-1" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PostalCode, "Почтовый индекс", new { @class = "form-label" })
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <i class="fas fa-mail-bulk"></i>
                                 </div>
+                                @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-input", placeholder = "123456" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "error-message" })
+                        </div>
+                    </div>
 
-                                <div class="mb-4">
-                                    @Html.LabelFor(m => m.PostalCode, new { @class = "form-label fw-semibold" })
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-mailbox"></i>
-                                        </span>
-                                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control border-start-0", placeholder = "Введите почтовый индекс" })
-                                    </div>
-                                    @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger small mt-1" })
+                    <div class="form-row">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Country, "Страна", new { @class = "form-label" })
+                            <div class="input-wrapper">
+                                <div class="input-icon">
+                                    <i class="fas fa-globe"></i>
                                 </div>
+                                @Html.TextBoxFor(m => m.Country, new { @class = "form-input", placeholder = "Название страны" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Country, "", new { @class = "error-message" })
+                        </div>
+                    </div>
 
-                                <div class="mb-4">
-                                    @Html.LabelFor(m => m.Country, new { @class = "form-label fw-semibold" })
-                                    <div class="input-group">
-                                        <span class="input-group-text bg-light border-end-0">
-                                            <i class="bi bi-globe"></i>
-                                        </span>
-                                        @Html.TextBoxFor(m => m.Country, new { @class = "form-control border-start-0", placeholder = "Введите страну" })
-                                    </div>
-                                    @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger small mt-1" })
+                    <div class="delivery-info">
+                        <h3 class="info-title">Информация о доставке</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-truck"></i>
                                 </div>
-
-                                <div class="d-flex justify-content-between mt-4">
-                                    @Html.ActionLink("Отмена", "Profile", null, new { @class = "btn btn-outline-secondary rounded-pill px-4" })
-                                    <button type="submit" class="btn btn-primary rounded-pill px-4">
-                                        <i class="bi bi-check2 me-1"></i> Сохранить
-                                    </button>
+                                <div class="info-content">
+                                    <h4>Бесплатная доставка</h4>
+                                    <p>При заказе от 2 000 $</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Быстрая доставка</h4>
+                                    <p>1-3 рабочих дня</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Безопасность</h4>
+                                    <p>Страхование посылки</p>
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Сохранить адрес
+                        </button>
+                        @Html.ActionLink("Отмена", "Profile", null, new { @class = "btn-secondary" })
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Address Tips -->
+        <div class="address-tips">
+            <h3 class="tips-title">Советы по заполнению</h3>
+            <div class="tips-list">
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h4>Точный адрес</h4>
+                        <p>Укажите полный адрес с номером дома и квартиры для точной доставки</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h4>Контактный телефон</h4>
+                        <p>Убедитесь, что ваш телефон указан в профиле для связи курьера</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h4>Ориентиры</h4>
+                        <p>Добавьте ориентиры в комментарии к заказу для удобства курьера</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <style>
-    .form-control:focus, .input-group-text {
-        box-shadow: none;
-        border-color: #dee2e6;
+    /* Address Hero Section */
+    .address-hero {
+        background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('/Content/Images/delivery-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
     }
-    .input-group-text {
-        color: #6c757d;
+
+    .address-hero-content {
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    .address-hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .address-hero-subtitle {
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.9;
+    }
+
+    /* Address Edit Section */
+    .address-edit-section {
+        padding: 60px 0;
+        background-color: #f9f9f9;
+    }
+
+    .address-edit-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 60px;
+    }
+
+    .address-edit-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .address-edit-header {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        color: #0a192f;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+        color: #666666;
+        margin: 0;
+    }
+
+    /* Success Message */
+    .success-message {
+        display: flex;
+        align-items: center;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 30px;
+        color: #155724;
+    }
+
+    .success-icon {
+        margin-right: 12px;
+        font-size: 18px;
+    }
+
+    .success-text {
+        font-weight: 500;
+    }
+
+    /* Form Styles */
+    .address-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .form-row:has(.form-group:nth-child(2)) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: #0a192f;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666666;
+        z-index: 2;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s ease;
+        background-color: #ffffff;
+        box-sizing: border-box;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #0a192f;
+        box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1);
+    }
+
+    .form-input::placeholder {
+        color: #999999;
+    }
+
+    .error-message {
+        display: block;
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* Delivery Info */
+    .delivery-info {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 25px;
+        margin: 30px 0;
+    }
+
+    .info-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        color: #0a192f;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+    }
+
+    .info-item {
+        text-align: center;
+    }
+
+    .info-icon {
+        background-color: #0a192f;
+        color: #ffffff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+    }
+
+    .info-content h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #0a192f;
+        margin-bottom: 5px;
+    }
+
+    .info-content p {
+        font-size: 12px;
+        color: #666666;
+        margin: 0;
+    }
+
+    /* Form Actions */
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .btn-primary {
+        background-color: #0a192f;
+        color: #ffffff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #172a46;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(10, 25, 47, 0.3);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: #0a192f;
+        border: 2px solid #0a192f;
+        padding: 13px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-secondary:hover {
+        background-color: #0a192f;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    /* Address Tips */
+    .address-tips {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+    }
+
+    .tips-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        color: #0a192f;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .tips-list {
+        space-y: 20px;
+    }
+
+    .tip-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .tip-icon {
+        background-color: #f8f9fa;
+        color: #0a192f;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .tip-content h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #0a192f;
+        margin-bottom: 5px;
+    }
+
+    .tip-content p {
+        font-size: 14px;
+        color: #666666;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+    .address-hero-title {
+        font-size: 28px;
+    }
+
+    .address-edit-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .address-edit-card {
+        padding: 30px 20px;
+    }
+
+    .form-row:has(.form-group:nth-child(2)) {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        justify-content: center;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    }
+
+    @@media (max-width: 480px) {
+    .address-hero {
+        height: 200px;
+    }
+
+    .address-hero-title {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
     }
 </style>

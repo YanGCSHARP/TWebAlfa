@@ -3,76 +3,614 @@
     ViewBag.Title = "История заказов";
 }
 
-<div class="container py-5">
-    <h2 class="mb-4 fw-bold">@ViewBag.Title</h2>
-    
-    @if (Model.Any())
-    {
-        <div class="row">
-            @foreach (var order in Model)
-            {
-                <div class="col-12 mb-3">
-                    <div class="card shadow-sm border-0 rounded-3 hover-shadow">
-                        <div class="card-body p-4">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="fw-bold mb-1">Заказ #@order.Id.ToString().Substring(0, 8)</h5>
-                                    <div class="text-muted mb-2">
-                                        <i class="bi bi-calendar3"></i> @order.OrderDate.ToString("dd.MM.yyyy HH:mm")
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    @{
-                                        string badgeClass = "bg-primary";
-                                        if (order.Status.ToString() == "Доставлен") 
-                                        {
-                                            badgeClass = "bg-success";
-                                        }
-                                        else if (order.Status.ToString() == "В обработке") 
-                                        {
-                                            badgeClass = "bg-warning text-dark";
-                                        }
-                                        else if (order.Status.ToString() == "Отправлен") 
-                                        {
-                                            badgeClass = "bg-info text-dark";
-                                        }
-                                        else if (order.Status.ToString() == "Отменен") 
-                                        {
-                                            badgeClass = "bg-danger";
-                                        }
-                                    }
-                                    <span class="badge @badgeClass rounded-pill px-3 py-2 mb-2">@order.Status</span>
-                                    <div class="h4 fw-bold mt-1">@order.TotalAmount.ToString("C")</div>
+<!-- Orders Hero Section -->
+<section class="orders-hero">
+    <div class="orders-hero-content">
+        <h1 class="orders-hero-title">История заказов</h1>
+        <p class="orders-hero-subtitle">Отслеживайте статус ваших покупок</p>
+    </div>
+</section>
+
+<!-- Orders Section -->
+<section class="orders-section">
+    <div class="orders-container">
+        @if (Model.Any())
+        {
+            <div class="orders-header">
+                <h2 class="section-title">Ваши заказы</h2>
+                <div class="orders-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">@Model.Count</span>
+                        <span class="stat-label">Всего заказов</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">@Model.Where(o => o.Status.ToString() == "Delived").Count()</span>
+                        <span class="stat-label">Доставлено</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">@Model.Sum(o => o.TotalAmount).ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
+                        <span class="stat-label">Общая сумма</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="orders-list">
+                @foreach (var order in Model.OrderByDescending(o => o.OrderDate))
+                {
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-info">
+                                <h3 class="order-number">Заказ #@order.Id.ToString().Substring(0, 8).ToUpper()</h3>
+                                <div class="order-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    @order.OrderDate.ToString("dd MMMM yyyy, HH:mm", new System.Globalization.CultureInfo("ru-RU"))
                                 </div>
                             </div>
-                            <div class="mt-3 text-end">
-                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">
-                                    <i class="bi bi-eye"></i> Подробнее
+                            <div class="order-status">
+                                @{
+                                    string statusClass = "status-pending";
+                                    string statusIcon = "fas fa-clock";
+                                    string statusText = order.Status.ToString();
+
+                                    switch (order.Status.ToString())
+                                    {
+                                        case "Deliverd":
+                                            statusClass = "status-delivered";
+                                            statusIcon = "fas fa-check-circle";
+                                            break;
+                                        case "В обработке":
+                                            statusClass = "status-processing";
+                                            statusIcon = "fas fa-cog";
+                                            break;
+                                        case "Shipped":
+                                            statusClass = "status-shipped";
+                                            statusIcon = "fas fa-truck";
+                                            break;
+                                        case "Cancelled":
+                                            statusClass = "status-cancelled";
+                                            statusIcon = "fas fa-times-circle";
+                                            break;
+                                    }
+                                }
+                                <div class="status-badge @statusClass">
+                                    <i class="@statusIcon"></i>
+                                    @statusText
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-content">
+                            <div class="order-details">
+                                <div class="order-amount">
+                                    <span class="amount-label">Сумма заказа:</span>
+                                    <span class="amount-value">@order.TotalAmount.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span>
+                                </div>
+
+                                @if (order.Status.ToString() == "Shipped" || order.Status.ToString() == "Delivered")
+                                {
+                                    <div class="tracking-info">
+                                        <i class="fas fa-shipping-fast"></i>
+                                        <span>Трек-номер: @("TRK-" + Guid.NewGuid().ToString().Substring(0, 8).ToUpper())  </span>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="order-actions">
+                                <a href="@Url.Action("OrderDetails", "Account", new { id = order.Id })" class="btn-outline">
+                                    <i class="fas fa-eye"></i>
+                                    Подробнее
                                 </a>
+
+                                @if (order.Status.ToString() == "Deliverd")
+                                {
+                                    <a href="@Url.Action("Reorder", "Account", new { id = order.Id })" class="btn-primary">
+                                        <i class="fas fa-redo"></i>
+                                        Повторить заказ
+                                    </a>
+                                }
+
+                                @if (order.Status.ToString() == "В обработке")
+                                {
+                                    <a href="@Url.Action("CancelOrder", "Account", new { id = order.Id })" class="btn-danger" onclick="return confirm('Вы уверены, что хотите отменить заказ?')">
+                                        <i class="fas fa-times"></i>
+                                        Отменить
+                                    </a>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="order-progress">
+                            <div class="progress-bar">
+                                @{
+                                    int progressWidth = 25;
+                                    switch (order.Status.ToString())
+                                    {
+                                        case "В обработке":
+                                            progressWidth = 25;
+                                            break;
+                                        case "Shipped":
+                                            progressWidth = 75;
+                                            break;
+                                        case "Delivered":
+                                            progressWidth = 100;
+                                            break;
+                                        case "Cancelled":
+                                            progressWidth = 0;
+                                            break;
+                                    }
+                                }
+                                <div class="progress-fill" style="width: @progressWidth%"></div>
+                            </div>
+                            <div class="progress-steps">
+                                <div class="step @(progressWidth >= 25 ? "completed" : "")">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>Заказ создан</span>
+                                </div>
+                                <div class="step @(progressWidth >= 75 ? "completed" : "")">
+                                    <i class="fas fa-truck"></i>
+                                    <span>Отправлен</span>
+                                </div>
+                                <div class="step @(progressWidth >= 100 ? "completed" : "")">
+                                    <i class="fas fa-home"></i>
+                                    <span>Доставлен</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
-        </div>
-    }
-    else
-    {
-        <div class="card border-0 shadow-sm rounded-3 p-4 text-center">
-            <div class="py-4">
-                <i class="bi bi-bag-x fs-1 text-muted mb-3"></i>
-                <h5>У вас пока нет завершенных заказов</h5>
-                <p class="text-muted">Когда вы сделаете заказ, он появится здесь</p>
-                <a href="/catalog" class="btn btn-primary rounded-pill px-4 mt-2">Перейти к покупкам</a>
+                }
             </div>
-        </div>
-    }
-</div>
+        }
+        else
+        {
+            <div class="empty-orders">
+                <div class="empty-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h3 class="empty-title">У вас пока нет заказов</h3>
+                <p class="empty-text">Когда вы сделаете первую покупку, информация о заказе появится здесь</p>
+                <a href="@Url.Action("Index", "Catalog")" class="btn-primary">
+                    <i class="fas fa-shopping-cart"></i>
+                    Начать покупки
+                </a>
+            </div>
+        }
+    </div>
+</section>
 
 <style>
-    .hover-shadow:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    /* Orders Hero Section */
+    .orders-hero {
+        background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('/Content/Images/orders-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .orders-hero-content {
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    .orders-hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .orders-hero-subtitle {
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.9;
+    }
+
+    /* Orders Section */
+    .orders-section {
+        padding: 60px 0;
+        background-color: #f9f9f9;
+    }
+
+    .orders-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Orders Header */
+    .orders-header {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        color: #0a192f;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .orders-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .stat-number {
+        display: block;
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #0a192f;
+        margin-bottom: 5px;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #666666;
+        font-weight: 500;
+    }
+
+    /* Orders List */
+    .orders-list {
+        space-y: 20px;
+    }
+
+    .order-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         transition: all 0.3s ease;
+    }
+
+    .order-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Order Header */
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .order-number {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: #0a192f;
+        margin-bottom: 8px;
+    }
+
+    .order-date {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #666666;
+    }
+
+    .order-date i {
+        margin-right: 8px;
+    }
+
+    /* Status Badges */
+    .status-badge {
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        gap: 6px;
+    }
+
+    .status-pending {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .status-processing {
+        background-color: #cce5ff;
+        color: #004085;
+    }
+
+    .status-shipped {
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
+
+    .status-delivered {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .status-cancelled {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    /* Order Content */
+    .order-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .order-details {
+        flex: 1;
+    }
+
+    .order-amount {
+        margin-bottom: 10px;
+    }
+
+    .amount-label {
+        font-size: 14px;
+        color: #666666;
+        margin-right: 10px;
+    }
+
+    .amount-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0a192f;
+    }
+
+    .tracking-info {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #666666;
+    }
+
+    .tracking-info i {
+        margin-right: 8px;
+        color: #0a192f;
+    }
+
+    /* Order Actions */
+    .order-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        color: #0a192f;
+        border: 2px solid #0a192f;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+        background-color: #0a192f;
+        color: #ffffff;
+    }
+
+    .btn-primary {
+        background-color: #0a192f;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #172a46;
+        transform: translateY(-1px);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        transform: translateY(-1px);
+    }
+
+    /* Order Progress */
+    .order-progress {
+        margin-top: 20px;
+    }
+
+    .progress-bar {
+        height: 4px;
+        background-color: #e9ecef;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background-color: #0a192f;
+        transition: width 0.3s ease;
+    }
+
+    .progress-steps {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 12px;
+        color: #999999;
+        transition: all 0.3s ease;
+    }
+
+    .step.completed {
+        color: #0a192f;
+    }
+
+    .step i {
+        font-size: 16px;
+        margin-bottom: 5px;
+        padding: 8px;
+        border-radius: 50%;
+        background-color: #e9ecef;
+        transition: all 0.3s ease;
+    }
+
+    .step.completed i {
+        background-color: #0a192f;
+        color: #ffffff;
+    }
+
+    /* Empty Orders */
+    .empty-orders {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 60px 30px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .empty-icon {
+        font-size: 64px;
+        color: #dee2e6;
+        margin-bottom: 25px;
+    }
+
+    .empty-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        color: #0a192f;
+        margin-bottom: 15px;
+    }
+
+    .empty-text {
+        font-size: 16px;
+        color: #666666;
+        margin-bottom: 30px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .empty-orders .btn-primary {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+    .orders-hero-title {
+        font-size: 28px;
+    }
+
+    .orders-header {
+        padding: 20px;
+    }
+
+    .orders-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .order-card {
+        padding: 20px;
+    }
+
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .order-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .order-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .progress-steps {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .step {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+    }
+
+    @@media (max-width: 480px) {
+    .orders-hero {
+        height: 200px;
+    }
+
+    .orders-hero-title {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .empty-orders {
+        padding: 40px 20px;
+    }
+
+    .empty-icon {
+        font-size: 48px;
+    }
     }
 </style>

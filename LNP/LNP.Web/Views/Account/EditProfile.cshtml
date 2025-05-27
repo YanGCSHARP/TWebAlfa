@@ -4,52 +4,407 @@
     ViewBag.Title = "Редактирование профиля";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm rounded-3">
-                <div class="card-header bg-white border-0 pt-3 pb-3">
-                    <h2 class="fw-bold mb-0">@ViewBag.Title</h2>
-                </div>
-                <div class="card-body p-4">
-                    @if (TempData["SuccessMessage"] != null)
-                    {
-                        <div class="alert alert-success mb-4">
-                            @TempData["SuccessMessage"]
-                        </div>
-                    }
-                    
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.Name, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control form-control-lg" })
-                            @Html.ValidationMessageFor(m => m.Name)
-                        </div>
-                        
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg" })
-                            @Html.ValidationMessageFor(m => m.Email)
-                        </div>
-                        
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control form-control-lg" })
-                            @Html.ValidationMessageFor(m => m.PhoneNumber)
-                        </div>
+<!-- Profile Hero Section -->
+<section class="profile-hero">
+    <div class="profile-hero-content">
+        <h1 class="profile-hero-title">Мой профиль</h1>
+        <p class="profile-hero-subtitle">Управление личной информацией</p>
+    </div>
+</section>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">
-                                <i class="bi bi-save me-2"></i> Сохранить изменения
-                            </button>
-                            @Html.ActionLink("Отмена", "Profile", null, new { @class = "btn btn-outline-secondary btn-lg rounded-pill" })
-                        </div>
-                    }
-                </div>
+<!-- Profile Edit Section -->
+<section class="profile-edit-section">
+    <div class="profile-edit-container">
+        <div class="profile-edit-card">
+            <div class="profile-edit-header">
+                <h2 class="section-title">@ViewBag.Title</h2>
+                <p class="section-subtitle">Обновите свою личную информацию</p>
             </div>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="success-text">@TempData["SuccessMessage"]</div>
+                </div>
+            }
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                
+                <div class="profile-form">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name, "Полное имя", new { @class = "form-label" })
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-input", placeholder = "Введите ваше полное имя" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "error-message" })
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, "Email адрес", new { @class = "form-label" })
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-input", placeholder = "Введите ваш email" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error-message" })
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, "Номер телефона", new { @class = "form-label" })
+                        <div class="input-wrapper">
+                            <div class="input-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-input", placeholder = "+7 (___) ___-__-__" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "error-message" })
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Сохранить изменения
+                        </button>
+                        @Html.ActionLink("Отмена", "Profile", null, new { @class = "btn-secondary" })
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Profile Navigation -->
+        <div class="profile-navigation">
+            <h3 class="nav-title">Управление аккаунтом</h3>
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="@Url.Action("EditProfile", "Account")" class="nav-link">
+                        <i class="fas fa-user-edit"></i>
+                        Редактировать профиль
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("EditAddress", "Account")" class="nav-link">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Адрес доставки
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("OrderHistory", "Account")" class="nav-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        История заказов
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("ChangePassword", "Account")" class="nav-link">
+                        <i class="fas fa-lock"></i>
+                        Изменить пароль
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</section>
+
+<style>
+    /* Profile Hero Section */
+    .profile-hero {
+        background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('/Content/Images/profile-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .profile-hero-content {
+        max-width: 600px;
+        padding: 0 20px;
+    }
+
+    .profile-hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .profile-hero-subtitle {
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.9;
+    }
+
+    /* Profile Edit Section */
+    .profile-edit-section {
+        padding: 60px 0;
+        background-color: #f9f9f9;
+    }
+
+    .profile-edit-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 60px;
+    }
+
+    .profile-edit-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .profile-edit-header {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        color: #0a192f;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+        color: #666666;
+        margin: 0;
+    }
+
+    /* Success Message */
+    .success-message {
+        display: flex;
+        align-items: center;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 30px;
+        color: #155724;
+    }
+
+    .success-icon {
+        margin-right: 12px;
+        font-size: 18px;
+    }
+
+    .success-text {
+        font-weight: 500;
+    }
+
+    /* Form Styles */
+    .profile-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 600;
+        color: #0a192f;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666666;
+        z-index: 2;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s ease;
+        background-color: #ffffff;
+        box-sizing: border-box;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #0a192f;
+        box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1);
+    }
+
+    .form-input::placeholder {
+        color: #999999;
+    }
+
+    .error-message {
+        display: block;
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* Form Actions */
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .btn-primary {
+        background-color: #0a192f;
+        color: #ffffff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #172a46;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(10, 25, 47, 0.3);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: #0a192f;
+        border: 2px solid #0a192f;
+        padding: 13px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-secondary:hover {
+        background-color: #0a192f;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    /* Profile Navigation */
+    .profile-navigation {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+    }
+
+    .nav-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        color: #0a192f;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .nav-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-item {
+        margin-bottom: 8px;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        color: #666666;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .nav-link i {
+        margin-right: 12px;
+        width: 18px;
+        text-align: center;
+    }
+
+    .nav-link:hover,
+    .nav-item.active .nav-link {
+        background-color: #0a192f;
+        color: #ffffff;
+        transform: translateX(5px);
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .profile-hero-title {
+            font-size: 28px;
+        }
+
+        .profile-edit-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .profile-edit-card {
+            padding: 30px 20px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            justify-content: center;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .profile-hero {
+            height: 200px;
+        }
+
+        .profile-hero-title {
+            font-size: 24px;
+        }
+
+        .section-title {
+            font-size: 24px;
+        }
+    }
+</style>
